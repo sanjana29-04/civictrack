@@ -1,0 +1,38 @@
+# Root .gitignore for CivicTrack 2.0
+
+# Maven / Java
+**/target/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.logs
+**/backend/data/
+**/backend/uploads/
+*.mv.db
+*.trace.db
+
+# Node / Frontend
+**/node_modules/
+**/dist/
+**/build/
+.npm
+.eslintcache
+
+# IDEs & OS
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Environment & Local Secrets
+.env
+.env.local
+.env.*.local
+*.log

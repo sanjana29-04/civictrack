@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:16-3.4-alpine
+    container_name: civictrack-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: civictrack
+      POSTGRES_USER: civictrack
+      POSTGRES_PASSWORD: civictrack_secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U civictrack -d civictrack"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: civictrack-backend
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/civictrack
+      SPRING_DATASOURCE_USERNAME: civictrack
+      SPRING_DATASOURCE_PASSWORD: civictrack_secret
+      CIVICTRACK_JWT_SECRET: superSecretKeyForCivicTrack2024LongEnough32BytesMinimum!
+      CIVICTRACK_STORAGE_UPLOAD_DIR: ./uploads
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: civictrack-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  uploads_data:
