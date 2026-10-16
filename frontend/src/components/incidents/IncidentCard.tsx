@@ -18,9 +18,9 @@ export const IncidentCard: React.FC<Props> = ({ incident }) => {
   });
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-all hover:border-slate-300 flex flex-col group">
+    <div className="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
       {/* Image header with status overlay */}
-      <div className="relative h-44 bg-slate-100 overflow-hidden">
+      <div className="relative h-48 bg-slate-100 overflow-hidden">
         {incident.primaryPhotoUrl ? (
           <img
             src={incident.primaryPhotoUrl}

@@ -35,9 +35,15 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Outfit', '"Plus Jakarta Sans"', 'sans-serif'],
+      },
+      boxShadow: {
+        'glow-brand': '0 0 25px -5px rgba(30, 90, 238, 0.4)',
+        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
+        'glow-amber': '0 0 25px -5px rgba(245, 158, 11, 0.4)',
       },
     },
   },
   plugins: [],
-}
+};

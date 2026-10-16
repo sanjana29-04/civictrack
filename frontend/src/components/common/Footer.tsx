@@ -18,9 +18,9 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-slate-400 leading-relaxed">
               Report it. Track it. Verify it. The AI-assisted civic accountability platform empowering citizens through photographic evidence, duplicate-aware reporting, and transparent resolution tracking.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-xs text-brand-400">
+            <div className="pt-2 flex items-center gap-2 text-xs text-emerald-400 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Production Portfolio Edition
+              🇮🇳 Clean India, Better India Movement
             </div>
           </div>
 
@@ -68,17 +68,36 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Technology & Recruiter info */}
+          {/* Clean India, Better India Mission */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">Architecture Stack</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <span>🇮🇳</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-emerald-400 to-teal-300">
+                Clean India, Better India
+              </span>
+            </h4>
             <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Built with Java 17, Spring Boot 3.2, PostgreSQL, Leaflet, React 18, TypeScript, and Tailwind CSS.
+              A youth-powered civic movement transforming urban neighborhoods. Snap the problem, track the progress, and hold public authorities accountable with photo proof.
             </p>
-            <div className="p-3 rounded-lg bg-navy-900 border border-navy-800 text-[11px] text-slate-400 space-y-1">
-              <p className="font-semibold text-slate-200">Demo Credentials:</p>
-              <p>Citizen: <code className="text-brand-300">citizen@civictrack.org</code></p>
-              <p>Staff: <code className="text-amber-300">staff@civictrack.org</code></p>
-              <p>Pass: <code className="text-slate-300">Password123!</code></p>
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-navy-900 border border-emerald-500/20 text-[11px] text-slate-300 space-y-2">
+              <div className="flex items-center gap-2 font-bold text-emerald-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>Our Citizen Pledge</span>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-tight">
+                No silent closures. Every fix must be verified by the community with before & after evidence.
+              </p>
+              <div className="pt-1 flex flex-wrap gap-1.5">
+                <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[10px] font-semibold">
+                  #SwachhBharat
+                </span>
+                <span className="px-2 py-0.5 rounded-md bg-brand-500/10 text-brand-300 border border-brand-500/30 text-[10px] font-semibold">
+                  #CleanIndia
+                </span>
+                <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/30 text-[10px] font-semibold">
+                  #GenZAction
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -86,11 +105,11 @@ export const Footer: React.FC = () => {
         {/* Disclaimer & Attribution */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p className="text-center md:text-left">
-            Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">OpenStreetMap</a> contributors.
-            CivicTrack does not claim official municipal authority unless integration is certified.
+            Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">OpenStreetMap</a> & <a href="https://carto.com/attributions" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">CARTO</a>.
+            CivicTrack empowers communities through verifiable photographic evidence.
           </p>
-          <p className="text-center md:text-right">
-            Designed for engineering portfolio & civic accountability.
+          <p className="text-center md:text-right font-medium text-slate-400">
+            🇮🇳 Clean India, Better India — Powered by Youth Civic Accountability.
           </p>
         </div>
       </div>

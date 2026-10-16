@@ -21,11 +21,10 @@ import {
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
-  const { user, logout, isCitizen, isModerator, isOperations, login } = useAuth();
+  const { user, logout, isCitizen, isModerator, isOperations } = useAuth();
   const { unreadCount } = useNotifications();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -35,42 +34,27 @@ export const Navbar: React.FC = () => {
     setUserDropdownOpen(false);
   };
 
-  const handleQuickDemoSwitch = async (role: 'citizen' | 'moderator' | 'staff') => {
-    try {
-      const emailMap = {
-        citizen: 'citizen@civictrack.org',
-        moderator: 'moderator@civictrack.org',
-        staff: 'staff@civictrack.org',
-      };
-      await login({ email: emailMap[role], password: 'Password123!' });
-      setUserDropdownOpen(false);
-      navigate(role === 'citizen' ? '/dashboard' : role === 'moderator' ? '/admin/reviews' : '/admin/operations');
-    } catch (err) {
-      console.error('Demo switch failed', err);
-    }
-  };
-
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+    <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-xl border-b border-slate-200/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo & Brand */}
           <div className="flex items-center gap-6">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
-                <ShieldAlert className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-brand-500/25 group-hover:scale-105 transition-transform">
+                <ShieldAlert className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xl font-extrabold text-navy-900 tracking-tight flex items-center gap-1.5">
+                <span className="text-xl font-extrabold text-navy-900 tracking-tight flex items-center gap-1.5 font-display">
                   CivicTrack
-                  <span className="text-xs font-semibold px-1.5 py-0.5 rounded-md bg-brand-50 text-brand-700 border border-brand-200">
-                    2.0
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    🇮🇳 Clean India
                   </span>
                 </span>
-                <span className="block text-[10px] text-slate-500 font-medium tracking-wide">
-                  Accountability Platform
+                <span className="block text-[10px] text-slate-500 font-semibold tracking-wide">
+                  Better India • Citizen Action
                 </span>
               </div>
             </Link>
@@ -79,87 +63,43 @@ export const Navbar: React.FC = () => {
             <nav className="hidden md:flex items-center gap-1">
               <Link
                 to="/explore"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  isActive('/explore') ? 'text-brand-700 bg-brand-50 font-semibold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-50'
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                  isActive('/explore') ? 'text-brand-700 bg-brand-50/80 font-extrabold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-100/60'
                 }`}
               >
                 Explore Issues
               </Link>
               <Link
                 to="/map"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                  isActive('/map') ? 'text-brand-700 bg-brand-50 font-semibold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-50'
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  isActive('/map') ? 'text-brand-700 bg-brand-50/80 font-extrabold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-100/60'
                 }`}
               >
-                <MapPin className="w-4 h-4 text-brand-600" />
+                <MapPin className="w-3.5 h-3.5 text-brand-600" />
                 Live Map
               </Link>
               <Link
                 to="/how-it-works"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  isActive('/how-it-works') ? 'text-brand-700 bg-brand-50 font-semibold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-50'
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                  isActive('/how-it-works') ? 'text-brand-700 bg-brand-50/80 font-extrabold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-100/60'
                 }`}
               >
                 How It Works
               </Link>
               <Link
                 to="/analytics"
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                  isActive('/analytics') ? 'text-brand-700 bg-brand-50 font-semibold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-50'
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  isActive('/analytics') ? 'text-brand-700 bg-brand-50/80 font-extrabold' : 'text-slate-600 hover:text-navy-900 hover:bg-slate-100/60'
                 }`}
               >
-                <BarChart3 className="w-4 h-4 text-emerald-600" />
-                Civic Analytics
+                <BarChart3 className="w-3.5 h-3.5 text-emerald-600" />
+                Impact Analytics
               </Link>
             </nav>
           </div>
 
           {/* Right Section / Actions */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Quick Demo Switcher Pill */}
-            <div className="relative">
-              <button
-                onClick={() => setAdminDropdownOpen(!adminDropdownOpen)}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors"
-                title="Switch demo persona for testing"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                <span>Demo Persona</span>
-                <ChevronDown className="w-3 h-3 text-slate-500" />
-              </button>
-
-              {adminDropdownOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-56 rounded-xl bg-white shadow-xl border border-slate-200 py-1.5 z-50 animate-in fade-in slide-in-from-top-2"
-                  onMouseLeave={() => setAdminDropdownOpen(false)}
-                >
-                  <div className="px-3 py-1.5 border-b border-slate-100 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                    Instant Role Switch
-                  </div>
-                  <button
-                    onClick={() => handleQuickDemoSwitch('citizen')}
-                    className="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-brand-50 flex items-center justify-between"
-                  >
-                    <span>Priya Sharma (Citizen)</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800">Citizen</span>
-                  </button>
-                  <button
-                    onClick={() => handleQuickDemoSwitch('moderator')}
-                    className="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-purple-50 flex items-center justify-between"
-                  >
-                    <span>Rajesh Patel (Moderator)</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-800">Moderator</span>
-                  </button>
-                  <button
-                    onClick={() => handleQuickDemoSwitch('staff')}
-                    className="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-amber-50 flex items-center justify-between"
-                  >
-                    <span>Anil Verma (PWD Staff)</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">Operations</span>
-                  </button>
-                </div>
-              )}
-            </div>
 
             {/* Moderator/Operations Desk Menu */}
             {(isModerator || isOperations) && (
@@ -210,10 +150,10 @@ export const Navbar: React.FC = () => {
             {/* Report Issue CTA button */}
             <Link
               to="/report"
-              className="px-4 py-2 rounded-xl text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow transition-all flex items-center gap-2 group"
+              className="px-4 py-2.5 rounded-2xl text-xs font-bold bg-gradient-to-r from-brand-600 via-brand-500 to-teal-500 hover:from-brand-500 hover:to-teal-400 text-white shadow-md shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 group"
             >
-              <PlusCircle className="w-4 h-4 group-hover:rotate-90 transition-transform" />
-              Report Issue
+              <PlusCircle className="w-4 h-4 group-hover:rotate-90 transition-transform duration-200" />
+              <span>Report Problem</span>
             </Link>
 
             {user ? (
@@ -306,13 +246,13 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Link
                   to="/login"
-                  className="px-3.5 py-2 text-sm font-medium text-slate-700 hover:text-navy-900 hover:bg-slate-100 rounded-xl transition-colors"
+                  className="px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-navy-900 transition-colors"
                 >
                   Log In
                 </Link>
                 <Link
                   to="/register"
-                  className="px-3.5 py-2 text-sm font-semibold text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-xl border border-brand-200 transition-colors"
+                  className="px-4 py-2 text-xs font-bold text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-2xl border border-brand-200/80 hover:scale-105 active:scale-95 transition-all shadow-xs"
                 >
                   Register
                 </Link>
