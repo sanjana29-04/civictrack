@@ -13,14 +13,14 @@ export const Footer: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white">
                 <ShieldAlert className="w-5 h-5" />
               </div>
-              <span className="text-lg font-bold text-white tracking-tight">CivicTrack 2.0</span>
+              <span className="text-lg font-bold text-white tracking-tight">SnapFix</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Report it. Track it. Verify it. The AI-assisted civic accountability platform empowering citizens through photographic evidence, duplicate-aware reporting, and transparent resolution tracking.
+              Fixing our India together. The AI-assisted civic accountability platform empowering citizens through photographic evidence, duplicate-aware reporting, and transparent resolution tracking.
             </p>
             <div className="pt-2 flex items-center gap-2 text-xs text-emerald-400 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              🇮🇳 Clean India, Better India Movement
+              🇮🇳 SnapFix • Fixing Our India Together
             </div>
           </div>
 
@@ -105,11 +105,11 @@ export const Footer: React.FC = () => {
         {/* Disclaimer & Attribution */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p className="text-center md:text-left">
-            Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">OpenStreetMap</a> & <a href="https://carto.com/attributions" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">CARTO</a>.
-            CivicTrack empowers communities through verifiable photographic evidence.
+            Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">OpenStreetMap</a> & <a href="https://www.esri.com/" target="_blank" rel="noreferrer" className="underline hover:text-slate-300">Esri</a>.
+            SnapFix empowers communities through verifiable photographic evidence.
           </p>
           <p className="text-center md:text-right font-medium text-slate-400">
-            🇮🇳 Clean India, Better India — Powered by Youth Civic Accountability.
+            🇮🇳 SnapFix — Fixing Our India Together.
           </p>
         </div>
       </div>

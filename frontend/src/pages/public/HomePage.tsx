@@ -69,19 +69,19 @@ export const HomePage: React.FC = () => {
         <div className="relative max-w-5xl mx-auto text-center space-y-7 z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs font-bold backdrop-blur-md shadow-sm">
             <span className="text-sm">🇮🇳</span>
-            <span>Clean India, Better India Movement</span>
+            <span>SnapFix • Fixing Our India Together</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] font-display">
-            Clean India, <br className="hidden sm:inline" />
+            Fixing Our India, <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-              Better India.
+              Together.
             </span>
           </h1>
 
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-medium">
-            Snap it. Track it. Get it fixed. Zero excuses, total transparency. The Gen-Z civic platform turning your smartphone photos into real street repairs and cleaner neighborhoods.
+            Snap the problem. Track the progress. Verify the repair. SnapFix is the youth-powered civic movement turning your smartphone photos into real street repairs and cleaner neighborhoods.
           </p>
 
           {/* Quick Feature Badges */}
@@ -169,7 +169,7 @@ export const HomePage: React.FC = () => {
             <span>100% Real Action</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-navy-900 tracking-tight font-display">
-            How CivicTrack Gets Real Work Done
+            How SnapFix Gets Real Work Done
           </h2>
           <p className="text-sm text-slate-600 leading-relaxed">
             Snap the problem, AI routes it to field workers, and you verify the finished repair. No bureaucracy, no fake closures.

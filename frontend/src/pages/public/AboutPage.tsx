@@ -5,11 +5,15 @@ export const AboutPage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       <div className="space-y-4">
-        <h1 className="text-3xl font-extrabold text-navy-900 tracking-tight">
-          About CivicTrack 2.0
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">
+          <span>🇮🇳</span>
+          <span>SnapFix • Fixing Our India Together</span>
+        </div>
+        <h1 className="text-3xl font-extrabold text-navy-900 tracking-tight font-display">
+          About SnapFix
         </h1>
         <p className="text-base text-slate-600 leading-relaxed">
-          CivicTrack 2.0 is an intelligent civic technology platform engineered to bridge the gap between citizen observations and accountable municipal resolution. Designed as a production-grade portfolio project by a Computer Science & Engineering graduate to showcase robust full-stack architecture, clean code principles, and intelligent civic software engineering.
+          SnapFix is an intelligent civic accountability platform engineered to fix our India together by bridging the gap between citizen observations and accountable municipal resolution. Designed as a production-grade portfolio project by a Computer Science & Engineering graduate to showcase robust full-stack architecture, clean code principles, and intelligent civic software engineering.
         </p>
       </div>
 

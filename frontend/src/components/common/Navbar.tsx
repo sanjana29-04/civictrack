@@ -48,13 +48,13 @@ export const Navbar: React.FC = () => {
               </div>
               <div>
                 <span className="text-xl font-extrabold text-navy-900 tracking-tight flex items-center gap-1.5 font-display">
-                  CivicTrack
+                  SnapFix
                   <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
-                    🇮🇳 Clean India
+                    🇮🇳 India
                   </span>
                 </span>
                 <span className="block text-[10px] text-slate-500 font-semibold tracking-wide">
-                  Better India • Citizen Action
+                  Fixing Our India Together
                 </span>
               </div>
             </Link>

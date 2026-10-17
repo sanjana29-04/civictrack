@@ -17,15 +17,15 @@ export const HowItWorksPage: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       {/* Header */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold border border-brand-200">
-          <ShieldAlert className="w-4 h-4" />
-          The Civic Accountability Cycle
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+          <span>🇮🇳</span>
+          SnapFix • Fixing Our India Together
         </div>
-        <h1 className="text-4xl font-extrabold text-navy-900 tracking-tight">
-          How CivicTrack 2.0 Works
+        <h1 className="text-4xl font-extrabold text-navy-900 tracking-tight font-display">
+          How SnapFix Works
         </h1>
         <p className="text-base text-slate-600 leading-relaxed">
-          Traditional municipal reporting frequently fails because complaints disappear into black boxes or get closed without proof. CivicTrack replaces opacity with evidence, duplicate-aware coordination, and citizen-verified completion.
+          Traditional municipal reporting frequently fails because complaints disappear into black boxes or get closed without proof. SnapFix replaces opacity with photographic evidence, duplicate-aware coordination, and citizen-verified completion — fixing our India together.
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export const HowItWorksPage: React.FC = () => {
               Intelligent Duplicate Detection & Co-Endorsement
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Rather than filing dozens of disconnected complaints for the same road cave-in, CivicTrack executes a Haversine radius scan and text-similarity comparison. If matching reports exist, citizens can click "Support Instead" with a single tap. This consolidates community urgency without fragmenting municipal tickets.
+              Rather than filing dozens of disconnected complaints for the same road cave-in, SnapFix executes a Haversine radius scan and text-similarity comparison. If matching reports exist, citizens can click "Support Instead" with a single tap. This consolidates community urgency without fragmenting municipal tickets.
             </p>
           </div>
         </div>

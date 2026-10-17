@@ -76,12 +76,16 @@ export const InteractiveMapPage: React.FC = () => {
       {/* Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight flex items-center gap-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 mb-2">
+            <span>🇮🇳</span>
+            SnapFix • Fixing Our India Together
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight flex items-center gap-2 font-display">
             <MapPin className="w-7 h-7 text-brand-600" />
             Interactive Incident Map
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Real-time geospatial intelligence of civic infrastructure issues across neighborhoods.
+            Real-time geospatial intelligence of civic infrastructure issues across neighborhoods. Fixing our India together.
           </p>
         </div>
 

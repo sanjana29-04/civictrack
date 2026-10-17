@@ -38,7 +38,7 @@ export const LoginPage: React.FC = () => {
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold">
             <span>🇮🇳</span>
-            <span>Clean India, Better India Movement</span>
+            <span>SnapFix • Fixing Our India Together</span>
           </div>
 
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-teal-400 text-white flex items-center justify-center mx-auto shadow-lg shadow-brand-500/25">
@@ -97,7 +97,7 @@ export const LoginPage: React.FC = () => {
             className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 via-brand-500 to-teal-500 hover:from-brand-500 hover:to-teal-400 text-white font-bold text-sm shadow-lg shadow-brand-500/25 flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <UserCheck className="w-4 h-4" />}
-            <span>Sign In to CivicTrack</span>
+            <span>Sign In to SnapFix</span>
           </button>
         </form>
 

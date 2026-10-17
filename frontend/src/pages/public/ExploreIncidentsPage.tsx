@@ -69,7 +69,11 @@ export const ExploreIncidentsPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Page Header */}
       <div>
-        <h1 className="text-3xl font-extrabold text-navy-900 tracking-tight">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 mb-2">
+          <span>🇮🇳</span>
+          SnapFix • Fixing Our India Together
+        </div>
+        <h1 className="text-3xl font-extrabold text-navy-900 tracking-tight font-display">
           Explore Public Incidents
         </h1>
         <p className="text-sm text-slate-500 mt-1">
