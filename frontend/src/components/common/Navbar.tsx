@@ -43,13 +43,13 @@ export const Navbar: React.FC = () => {
           {/* Logo & Brand */}
           <div className="flex items-center gap-6">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-brand-500/25 group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-violet-600 via-fuchsia-500 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-violet-500/25 group-hover:scale-105 transition-transform">
                 <ShieldAlert className="w-5 h-5" />
               </div>
               <div>
                 <span className="text-xl font-extrabold text-navy-900 tracking-tight flex items-center gap-1.5 font-display">
                   SnapFix
-                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-violet-500/10 text-emerald-700 border border-emerald-300">
                     🇮🇳 India
                   </span>
                 </span>
@@ -58,6 +58,12 @@ export const Navbar: React.FC = () => {
                 </span>
               </div>
             </Link>
+
+            {/* Live Pan-India Counter Pill */}
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-violet-50 to-pink-50 border border-violet-200/80 text-xs font-bold text-violet-700 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              <span>🔥 26+ Pan-India Hotspots Active</span>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1">

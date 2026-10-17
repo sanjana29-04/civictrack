@@ -5,6 +5,8 @@ import { Incident, IncidentCategory, IncidentPriority, IncidentStatus, PageRespo
 import { IncidentCard } from '../../components/incidents/IncidentCard';
 import { Search, Filter, RotateCcw, AlertCircle, Loader2 } from 'lucide-react';
 
+import { POPULAR_CITIES } from '../../data/indiaIncidents';
+
 export const ExploreIncidentsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [incidents, setIncidents] = useState<Incident[]>([]);
@@ -23,17 +25,18 @@ export const ExploreIncidentsPage: React.FC = () => {
     (searchParams.get('priority') as IncidentPriority) || ''
   );
   const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page') || 0));
+  const [activeCity, setActiveCity] = useState<string>('All India');
 
-  const fetchIncidents = async () => {
+  const fetchIncidents = async (searchTerm = search) => {
     setLoading(true);
     try {
       const data = await incidentService.explore({
-        search: search.trim() || undefined,
+        search: searchTerm.trim() || undefined,
         category: category || undefined,
         status: status || undefined,
         priority: priority || undefined,
         page: currentPage,
-        size: 12,
+        size: 30, // Load all 26+ Pan-India reports at once
         sortBy: 'createdAt',
         direction: 'desc',
       });
@@ -50,6 +53,17 @@ export const ExploreIncidentsPage: React.FC = () => {
     fetchIncidents();
   }, [category, status, priority, currentPage]);
 
+  const handleCityFilter = (cityName: string) => {
+    setActiveCity(cityName);
+    if (cityName === 'All India') {
+      setSearch('');
+      fetchIncidents('');
+    } else {
+      setSearch(cityName);
+      fetchIncidents(cityName);
+    }
+  };
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setCurrentPage(0);
@@ -61,28 +75,63 @@ export const ExploreIncidentsPage: React.FC = () => {
     setCategory('');
     setStatus('');
     setPriority('');
+    setActiveCity('All India');
     setCurrentPage(0);
     setSearchParams({});
+    fetchIncidents('');
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Page Header */}
-      <div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 mb-2">
-          <span>🇮🇳</span>
-          SnapFix • Fixing Our India Together
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 mb-2">
+            <span>🇮🇳</span>
+            SnapFix • Fixing Our India Together
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight font-display">
+            Explore Pan-India Incidents
+          </h1>
+          <p className="text-sm text-slate-500 mt-1">
+            Search, filter, and track 26+ verified civic infrastructure reports across all Indian cities.
+          </p>
         </div>
-        <h1 className="text-3xl font-extrabold text-navy-900 tracking-tight font-display">
-          Explore Public Incidents
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Search, filter, and track verified civic infrastructure reports across all neighborhoods.
-        </p>
+
+        <div className="flex items-center gap-2">
+          <span className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-violet-100 to-pink-100 text-violet-800 border border-violet-200 text-xs font-extrabold shadow-2xs">
+            🔥 {incidents.length} Reports Found
+          </span>
+        </div>
+      </div>
+
+      {/* City Filter Pills */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs font-bold">
+        <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider pr-1 shrink-0">
+          📍 Quick City:
+        </span>
+        {POPULAR_CITIES.slice(0, 10).map((city) => {
+          const isActive = activeCity === city.name;
+          return (
+            <button
+              key={city.name}
+              type="button"
+              onClick={() => handleCityFilter(city.name)}
+              className={`px-3 py-1.5 rounded-full shrink-0 flex items-center gap-1.5 transition-all text-xs cursor-pointer ${
+                isActive
+                  ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-500/25 font-bold scale-105'
+                  : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/90 shadow-2xs'
+              }`}
+            >
+              <span>{city.emoji}</span>
+              <span>{city.name}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+      <div className="bg-white p-5 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
         <form onSubmit={handleSearchSubmit} className="flex gap-2">
           <div className="relative flex-1">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
@@ -90,13 +139,13 @@ export const ExploreIncidentsPage: React.FC = () => {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by keywords, incident #, road name, or landmark..."
-              className="w-full text-xs pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              placeholder="Search by keywords, city (Delhi, Mumbai, Bengaluru...), road name, or landmark..."
+              className="w-full text-xs pl-10 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 transition-all font-medium"
             />
           </div>
           <button
             type="submit"
-            className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition-colors shrink-0"
+            className="px-6 py-3 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-500 hover:from-violet-500 hover:to-pink-400 text-white text-xs font-extrabold rounded-2xl shadow-md shadow-violet-500/20 transition-all shrink-0 cursor-pointer"
           >
             Search
           </button>
