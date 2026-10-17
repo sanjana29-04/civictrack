@@ -104,7 +104,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         inc1.setAddress("MG Road, Metro Pillar 142");
         inc1.setLandmark("Opposite Metro Station Exit B");
         inc1.setIsApproximateLocation(false);
-        inc1.setPrimaryPhotoUrl("https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80");
+        inc1.setPrimaryPhotoUrl("/incidents/pothole_real.jpg");
         inc1.setReporter(citizen);
         inc1.setAssignedTeam("Roads & Bridges Quick Response Team 4");
         inc1.setAssignedStaff(staff);
@@ -136,7 +136,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         inc2.setAddress("MG Road, Metro Pillar 145");
         inc2.setLandmark("Near Metro Gate 3");
         inc2.setIsApproximateLocation(false);
-        inc2.setPrimaryPhotoUrl("https://images.unsplash.com/photo-1599818815779-7128532442ee?w=800&auto=format&fit=crop&q=80");
+        inc2.setPrimaryPhotoUrl("/incidents/pothole_real.jpg");
         inc2.setReporter(citizen2);
         inc2.setSupportCount(3);
         inc2 = incidentRepository.save(inc2);
@@ -174,7 +174,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         inc3.setAddress("12th Main Road, Koramangala 4th Block");
         inc3.setLandmark("Near Community Park Entry");
         inc3.setIsApproximateLocation(false);
-        inc3.setPrimaryPhotoUrl("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80");
+        inc3.setPrimaryPhotoUrl("/incidents/waterlog_real.jpg");
         inc3.setReporter(citizen);
         inc3.setAssignedTeam("Stormwater Sanitation Wing");
         inc3.setAssignedStaff(staff);
@@ -186,7 +186,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         timelineService.recordEvent(inc3, TimelineEventType.REPORT_SUBMITTED, citizen.getFullName(), "CITIZEN", "Waterlogging report submitted.", inc3.getPrimaryPhotoUrl(), true);
         timelineService.recordEvent(inc3, TimelineEventType.REVIEW_COMPLETED, moderator.getFullName(), "ROLE_MODERATOR", "Triage confirmed.", null, true);
         timelineService.recordEvent(inc3, TimelineEventType.ASSIGNED, staff.getFullName(), "ROLE_OPERATIONS", "Assigned to stormwater desilting crew.", null, true);
-        timelineService.recordEvent(inc3, TimelineEventType.RESOLUTION_PROPOSED, staff.getFullName(), "ROLE_OPERATIONS", "Desilted 40 meters of stormwater culvert, removed debris obstruction, and restored full hydraulic outflow.", "https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80", true);
+        timelineService.recordEvent(inc3, TimelineEventType.RESOLUTION_PROPOSED, staff.getFullName(), "ROLE_OPERATIONS", "Desilted 40 meters of stormwater culvert, removed debris obstruction, and restored full hydraulic outflow.", "/incidents/waterpipe_real.jpg", true);
 
         // Save resolution evidence record
         ResolutionEvidence resEvidence = new ResolutionEvidence();
@@ -195,7 +195,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         resEvidence.setResolutionSummary("Excavated silt and plastic blockage from 12th Main culvert. Water completely drained and culvert flow rate verified.");
         resEvidence.setInternalNotes("Contractor ref: KOR-SWD-981. Disposed 1.2 metric tons of silt at designated processing facility.");
         resEvidence.setBeforePhotoUrl(inc3.getPrimaryPhotoUrl());
-        resEvidence.setAfterPhotoUrl("https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80");
+        resEvidence.setAfterPhotoUrl("/incidents/waterpipe_real.jpg");
         resEvidence.setWorkOrderReference("WO-SWD-981");
         resEvidence.setConfirmationCount(1);
         resEvidence.setDisputeCount(0);
@@ -220,7 +220,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         inc4.setAddress("80 Feet Road, 6th Block");
         inc4.setLandmark("Beside St. Paul's School");
         inc4.setIsApproximateLocation(false);
-        inc4.setPrimaryPhotoUrl("https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80");
+        inc4.setPrimaryPhotoUrl("/incidents/streetlight_real.jpg");
         inc4.setReporter(citizen2);
         inc4.setAssignedTeam("Electrical & Streetlight Grid");
         inc4.setAssignedStaff(staff);
@@ -229,7 +229,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
 
         timelineService.recordEvent(inc4, TimelineEventType.REPORT_SUBMITTED, citizen2.getFullName(), "CITIZEN", "Initial report submitted.", inc4.getPrimaryPhotoUrl(), true);
         timelineService.recordEvent(inc4, TimelineEventType.RESOLUTION_PROPOSED, staff.getFullName(), "ROLE_OPERATIONS", "Temporary tape applied to wiring.", null, true);
-        timelineService.recordEvent(inc4, TimelineEventType.RESOLUTION_DISPUTED, citizen2.getFullName(), "CITIZEN", "Citizen disputed: Wire insulation detached within 2 hours; pole remains structurally tilted. Immediate replacement required.", "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80", true);
+        timelineService.recordEvent(inc4, TimelineEventType.RESOLUTION_DISPUTED, citizen2.getFullName(), "CITIZEN", "Citizen disputed: Wire insulation detached within 2 hours; pole remains structurally tilted. Immediate replacement required.", "/incidents/streetlight_real.jpg", true);
         timelineService.recordEvent(inc4, TimelineEventType.REOPENED, moderator.getFullName(), "ROLE_MODERATOR", "Moderator reviewed dispute and reopened incident for full pole re-installation.", null, true);
 
         // 6. Incident 5: Garbage & Sanitation (Confirmed, awaiting assignment)
@@ -245,7 +245,7 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         inc5.setLongitude(77.6057);
         inc5.setAddress("Commercial Street Cross, Tasker Town");
         inc5.setLandmark("Behind Municipal Market Complex");
-        inc5.setPrimaryPhotoUrl("https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80");
+        inc5.setPrimaryPhotoUrl("/incidents/garbage_real.jpg");
         inc5.setReporter(citizen);
         inc5.setSupportCount(6);
         inc5 = incidentRepository.save(inc5);
@@ -254,26 +254,26 @@ public class DatabaseDataSeeder implements CommandLineRunner {
         timelineService.recordEvent(inc5, TimelineEventType.REVIEW_COMPLETED, moderator.getFullName(), "ROLE_MODERATOR", "Verified with sanitation supervisor.", null, true);
 
         // 7. Seed Additional Pan-India Incidents Across Major Indian Metros
-        seedIncident("CIV-2026-1031", "Dangerous deep crater pothole near Outer Ring Road flyover descent", "Deep asphalt cavity across vehicular lane causing two-wheeler skidding.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.CRITICAL, 28.6139, 77.2090, "Outer Ring Road, Munirka", "Near Munirka Metro Gate 2, New Delhi", "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80", citizen, 42);
-        seedIncident("CIV-2026-1032", "Exposed loose electrical transformer wiring near Chandni Chowk", "High-voltage loose cable cluster dangling 6 feet above market walkway.", IncidentCategory.STREETLIGHTS, IncidentStatus.REOPENED, IncidentPriority.CRITICAL, 28.6506, 77.2303, "Main Chandni Chowk Road", "Town Hall Market Intersection, Delhi", "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80", citizen2, 56);
-        seedIncident("CIV-2026-1033", "Broken stormwater drain slab causing severe waterlogging on SV Road", "Collapsed concrete drain slab flooding pedestrian lane.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.RESOLVED_AWAITING_VERIFICATION, IncidentPriority.HIGH, 19.1136, 72.8697, "SV Road, Andheri West", "Near Andheri Station West, Mumbai", "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80", citizen, 38);
-        seedIncident("CIV-2026-1034", "Overflowing municipal waste compactor at Dadar Market crossing", "Tons of wet and dry waste overflowing onto sidewalk at flower market.", IncidentCategory.GARBAGE_SANITATION, IncidentStatus.CONFIRMED, IncidentPriority.HIGH, 19.0176, 72.8478, "Ranade Road, Dadar West", "Dadar Flower Market Gate 1, Mumbai", "https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80", citizen2, 29);
-        seedIncident("CIV-2026-1035", "Cracked pedestrian promenade slab & broken railings near Marine Drive", "Granite slabs displaced and 3 meters of sea-wall railing missing.", IncidentCategory.PUBLIC_PROPERTY_DAMAGE, IncidentStatus.UNDER_REVIEW, IncidentPriority.MEDIUM, 18.9438, 72.8232, "Marine Drive Promenade", "Opposite Air India Building, Mumbai", "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&auto=format&fit=crop&q=80", citizen, 17);
-        seedIncident("CIV-2026-1036", "Major road cavity & sinking bitumen near Cyber Towers Flyover", "Road surface sinking near water pipeline valve in IT corridor.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 17.4504, 78.3808, "Hitec City Main Road", "Under Cyber Towers Flyover Span 8, Hyderabad", "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80", citizen2, 39);
-        seedIncident("CIV-2026-1037", "Tangled low-hanging power cables obstructing alley in Charminar Bazaar", "Overhead cable web hanging dangerously low in historical market alley.", IncidentCategory.STREETLIGHTS, IncidentStatus.CONFIRMED, IncidentPriority.HIGH, 17.3616, 78.4747, "Laad Bazaar Road", "Opposite Nimrah Cafe, Charminar, Hyderabad", "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80", citizen, 28);
-        seedIncident("CIV-2026-1038", "Broken storm drain concrete grill with exposed rusted rebar on Usman Road", "Cracked concrete drainage slab with sharp rebar ends sticking out.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.IN_PROGRESS, IncidentPriority.CRITICAL, 13.0418, 80.2341, "Usman Road, T. Nagar", "Near Ranganathan Street Junction, Chennai", "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80", citizen2, 52);
-        seedIncident("CIV-2026-1039", "Salt-corroded streetlight mast with blinking fixture near Marina Beach", "Corrosion at base of lamp post along coastal arterial.", IncidentCategory.STREETLIGHTS, IncidentStatus.SUBMITTED, IncidentPriority.MEDIUM, 13.0500, 80.2824, "Kamarajar Salai, Marina Beach", "Near Triumph of Labour Statue, Chennai", "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80", citizen, 15);
-        seedIncident("CIV-2026-1040", "Displaced cobblestone pavement & tripping hazard on Park Street", "Uneven sidewalk stones tripping pedestrians outside bookstore.", IncidentCategory.FOOTPATHS_ACCESSIBILITY, IncidentStatus.UNDER_REVIEW, IncidentPriority.MEDIUM, 22.5516, 88.3524, "Park Street", "Near Camac Street Crossing, Kolkata", "https://images.unsplash.com/photo-1599818815779-7128532442ee?w=800&auto=format&fit=crop&q=80", citizen2, 22);
-        seedIncident("CIV-2026-1041", "Clogged municipal canal and construction debris dumping in Salt Lake Sector V", "Debris dumping blocking monsoon canal and overflowing onto IT road.", IncidentCategory.GARBAGE_SANITATION, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 22.5804, 88.4378, "Sector V, Bidhannagar", "Near Webel More Junction, Kolkata", "https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80", citizen, 34);
-        seedIncident("CIV-2026-1042", "Unbarricaded open utility trench on FC Road near Deccan Gymkhana", "Deep utility trench left open without reflective safety warning.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.CRITICAL, 18.5204, 73.8400, "FC Road, Shivajinagar", "Opposite Goodluck Cafe, Pune", "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80", citizen2, 45);
-        seedIncident("CIV-2026-1043", "Damaged median concrete barrier on SG Highway near Prahlad Nagar", "Shattered concrete divider with exposed rebar on fast highway lane.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 23.0125, 72.5020, "SG Highway", "Near Prahlad Nagar Garden, Ahmedabad", "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80", citizen, 33);
-        seedIncident("CIV-2026-1044-B", "Underground potable water pipeline burst spewing water on MI Road", "High-pressure clean water main pipeline burst flooding commercial road.", IncidentCategory.WATER_SUPPLY_LEAKAGE, IncidentStatus.RESOLVED_AWAITING_VERIFICATION, IncidentPriority.HIGH, 26.9157, 75.8080, "MI Road", "Near Panch Batti Junction, Jaipur", "https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80", citizen2, 51);
-        seedIncident("CIV-2026-1045", "Damaged heritage street lamp post knocked by transport vehicle in Hazratganj", "Victorian-style ornate lamp post tilted at 45 degrees.", IncidentCategory.STREETLIGHTS, IncidentStatus.IN_PROGRESS, IncidentPriority.MEDIUM, 26.8467, 80.9462, "Hazratganj Main Promenade", "Near Mayfair Cinema Crossing, Lucknow", "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80", citizen, 26);
-        seedIncident("CIV-2026-1046", "Severe road erosion & monsoon drain collapse along MG Road", "Coastal rainwater washout causing sub-base soil erosion along walkway.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.ASSIGNED, IncidentPriority.HIGH, 9.9816, 76.2790, "MG Road, Marine Drive", "Near Rainbow Bridge Walkway, Kochi", "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80", citizen2, 37);
-        seedIncident("CIV-2026-1047", "Landslide silt runoff choking stormwater drain on GS Road", "Hillslope earth washed down by heavy rains choking municipal conduit.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 26.1584, 91.7766, "GS Road", "Christian Basti Bus Stop, Guwahati", "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80", citizen, 41);
-        seedIncident("CIV-2026-1048", "Broken waste segregation bin lid causing garbage spill at Chhappan Dukan", "Hydraulic lid broken on municipal bin at famous food street.", IncidentCategory.GARBAGE_SANITATION, IncidentStatus.CONFIRMED, IncidentPriority.MEDIUM, 22.7244, 75.8839, "56 Dukan Food Street", "New Palasia, Indore", "https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80", citizen2, 30);
-        seedIncident("CIV-2026-1049", "Non-operational streetlights along curving VIP Road near Upper Lake", "Eight consecutive poles dark along sharp road curve next to lake.", IncidentCategory.STREETLIGHTS, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 23.2599, 77.3820, "VIP Road Frontage", "Near Raja Bhoj Statue Viewpoint, Bhopal", "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80", citizen, 35);
-        seedIncident("CIV-2026-1050", "Overflowing sewer line and damaged stone pathway near Dashashwamedh Ghat", "Ancient stone walkway cracked with sewage seepage from outdated pipe.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.CONFIRMED, IncidentPriority.HIGH, 25.3076, 83.0107, "Dashashwamedh Ghat Road", "Near Godowlia Crossing, Varanasi", "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80", citizen2, 48);
+        seedIncident("CIV-2026-1031", "Dangerous deep crater pothole near Outer Ring Road flyover descent", "Deep asphalt cavity across vehicular lane causing two-wheeler skidding.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.CRITICAL, 28.6139, 77.2090, "Outer Ring Road, Munirka", "Near Munirka Metro Gate 2, New Delhi", "/incidents/pothole_real.jpg", citizen, 42);
+        seedIncident("CIV-2026-1032", "Exposed loose electrical transformer wiring near Chandni Chowk", "High-voltage loose cable cluster dangling 6 feet above market walkway.", IncidentCategory.STREETLIGHTS, IncidentStatus.REOPENED, IncidentPriority.CRITICAL, 28.6506, 77.2303, "Main Chandni Chowk Road", "Town Hall Market Intersection, Delhi", "/incidents/streetlight_real.jpg", citizen2, 56);
+        seedIncident("CIV-2026-1033", "Broken stormwater drain slab causing severe waterlogging on SV Road", "Collapsed concrete drain slab flooding pedestrian lane.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.RESOLVED_AWAITING_VERIFICATION, IncidentPriority.HIGH, 19.1136, 72.8697, "SV Road, Andheri West", "Near Andheri Station West, Mumbai", "/incidents/waterlog_real.jpg", citizen, 38);
+        seedIncident("CIV-2026-1034", "Overflowing municipal waste compactor at Dadar Market crossing", "Tons of wet and dry waste overflowing onto sidewalk at flower market.", IncidentCategory.GARBAGE_SANITATION, IncidentStatus.CONFIRMED, IncidentPriority.HIGH, 19.0176, 72.8478, "Ranade Road, Dadar West", "Dadar Flower Market Gate 1, Mumbai", "/incidents/garbage_real.jpg", citizen2, 29);
+        seedIncident("CIV-2026-1035", "Cracked pedestrian promenade slab & broken benches near Marine Drive", "Damaged public benches and cracked walkway.", IncidentCategory.PUBLIC_PROPERTY_DAMAGE, IncidentStatus.UNDER_REVIEW, IncidentPriority.MEDIUM, 18.9438, 72.8232, "Marine Drive Promenade", "Opposite Air India Building, Mumbai", "/incidents/park_real.jpg", citizen, 17);
+        seedIncident("CIV-2026-1036", "Major road cavity & sinking bitumen near Cyber Towers Flyover", "Road surface sinking near water pipeline valve in IT corridor.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 17.4504, 78.3808, "Hitec City Main Road", "Under Cyber Towers Flyover Span 8, Hyderabad", "/incidents/pothole_real.jpg", citizen2, 39);
+        seedIncident("CIV-2026-1037", "Tangled low-hanging power cables obstructing alley in Charminar Bazaar", "Overhead cable web hanging dangerously low in historical market alley.", IncidentCategory.STREETLIGHTS, IncidentStatus.CONFIRMED, IncidentPriority.HIGH, 17.3616, 78.4747, "Laad Bazaar Road", "Opposite Nimrah Cafe, Charminar, Hyderabad", "/incidents/streetlight_real.jpg", citizen, 28);
+        seedIncident("CIV-2026-1038", "Severe waterlogging & submerged carriage-way on Usman Road", "Standing stormwater up to 1.5 feet deep flooding shopping corridor.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.IN_PROGRESS, IncidentPriority.CRITICAL, 13.0418, 80.2341, "Usman Road, T. Nagar", "Near Ranganathan Street Junction, Chennai", "/incidents/waterlog_real.jpg", citizen2, 52);
+        seedIncident("CIV-2026-1039", "Salt-corroded streetlight mast with blinking fixture near Marina Beach", "Corrosion at base of lamp post along coastal arterial.", IncidentCategory.STREETLIGHTS, IncidentStatus.SUBMITTED, IncidentPriority.MEDIUM, 13.0500, 80.2824, "Kamarajar Salai, Marina Beach", "Near Triumph of Labour Statue, Chennai", "/incidents/streetlight_real.jpg", citizen, 15);
+        seedIncident("CIV-2026-1040", "Displaced pavement slab & open drain hole on Park Street", "Makeshift warning tree branch placed to prevent pedestrian falls.", IncidentCategory.FOOTPATHS_ACCESSIBILITY, IncidentStatus.UNDER_REVIEW, IncidentPriority.MEDIUM, 22.5516, 88.3524, "Park Street", "Near Camac Street Crossing, Kolkata", "/incidents/manhole_real.jpg", citizen2, 22);
+        seedIncident("CIV-2026-1041", "Overflowing municipal green dumpster in Salt Lake Sector V", "Mixed refuse spilling onto street attracting stray animals.", IncidentCategory.GARBAGE_SANITATION, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 22.5804, 88.4378, "Sector V, Bidhannagar", "Near Webel More Junction, Kolkata", "/incidents/garbage_real.jpg", citizen, 34);
+        seedIncident("CIV-2026-1042", "Unbarricaded road crater on FC Road near Deccan Gymkhana", "Deep crater left without reflective safety warning.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.CRITICAL, 18.5204, 73.8400, "FC Road, Shivajinagar", "Opposite Goodluck Cafe, Pune", "/incidents/pothole_real.jpg", citizen2, 45);
+        seedIncident("CIV-2026-1043", "Damaged median barrier & potholes on SG Highway near Prahlad Nagar", "Clusters of road craters on fast highway lane.", IncidentCategory.ROADS_POTHOLES, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 23.0125, 72.5020, "SG Highway", "Near Prahlad Nagar Garden, Ahmedabad", "/incidents/pothole_real.jpg", citizen, 33);
+        seedIncident("CIV-2026-1044-B", "Underground potable water pipeline burst spewing water on MI Road", "High-pressure clean water main pipeline burst flooding commercial road.", IncidentCategory.WATER_SUPPLY_LEAKAGE, IncidentStatus.RESOLVED_AWAITING_VERIFICATION, IncidentPriority.HIGH, 26.9157, 75.8080, "MI Road", "Near Panch Batti Junction, Jaipur", "/incidents/waterpipe_real.jpg", citizen2, 51);
+        seedIncident("CIV-2026-1045", "Damaged heritage street lamp post with tangled wiring in Hazratganj", "Ornate lamp post tilted with loose wiring.", IncidentCategory.STREETLIGHTS, IncidentStatus.IN_PROGRESS, IncidentPriority.MEDIUM, 26.8467, 80.9462, "Hazratganj Main Promenade", "Near Mayfair Cinema Crossing, Lucknow", "/incidents/streetlight_real.jpg", citizen, 26);
+        seedIncident("CIV-2026-1046", "Severe road erosion & monsoon waterlogging along MG Road", "Coastal rainwater washout causing sub-base soil erosion along walkway.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.ASSIGNED, IncidentPriority.HIGH, 9.9816, 76.2790, "MG Road, Marine Drive", "Near Rainbow Bridge Walkway, Kochi", "/incidents/waterlog_real.jpg", citizen2, 37);
+        seedIncident("CIV-2026-1047", "Flash flood waterlogging choking GS Road", "Stormwater overflow submerging both lanes of GS Road.", IncidentCategory.DRAINAGE_WATERLOGGING, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 26.1584, 91.7766, "GS Road", "Christian Basti Bus Stop, Guwahati", "/incidents/waterlog_real.jpg", citizen, 41);
+        seedIncident("CIV-2026-1048", "Broken waste segregation bin lid causing garbage spill at Chhappan Dukan", "Hydraulic lid broken on municipal bin at famous food street.", IncidentCategory.GARBAGE_SANITATION, IncidentStatus.CONFIRMED, IncidentPriority.MEDIUM, 22.7244, 75.8839, "56 Dukan Food Street", "New Palasia, Indore", "/incidents/garbage_real.jpg", citizen2, 30);
+        seedIncident("CIV-2026-1049", "Non-operational streetlights along curving VIP Road near Upper Lake", "Eight consecutive poles dark along sharp road curve next to lake.", IncidentCategory.STREETLIGHTS, IncidentStatus.IN_PROGRESS, IncidentPriority.HIGH, 23.2599, 77.3820, "VIP Road Frontage", "Near Raja Bhoj Statue Viewpoint, Bhopal", "/incidents/streetlight_real.jpg", citizen, 35);
+        seedIncident("CIV-2026-1050", "Open sewer manhole on Dashashwamedh Ghat approach", "Makeshift wooden pole marker placed to prevent pilgrims from falling into manhole.", IncidentCategory.FOOTPATHS_ACCESSIBILITY, IncidentStatus.CONFIRMED, IncidentPriority.HIGH, 25.3076, 83.0107, "Dashashwamedh Ghat Road", "Near Godowlia Crossing, Varanasi", "/incidents/manhole_real.jpg", citizen2, 48);
 
         log.info("Successfully seeded SnapFix Pan-India demonstration data with 25+ incidents!");
         log.info("Demo accounts created: citizen@civictrack.org, moderator@civictrack.org, staff@civictrack.org (Password: Password123!)");

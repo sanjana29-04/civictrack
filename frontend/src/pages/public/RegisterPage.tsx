@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { ShieldAlert, Lock, Mail, User, Phone, Loader2, CheckCircle2 } from 'lucide-react';
+import { Lock, Mail, User, Phone, Loader2, CheckCircle2 } from 'lucide-react';
+import { SnapFixLogo } from '../../components/common/SnapFixLogo';
 
 export const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -46,9 +47,7 @@ export const RegisterPage: React.FC = () => {
             <span>SnapFix • Fixing Our India Together</span>
           </div>
 
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-teal-400 text-white flex items-center justify-center mx-auto shadow-lg shadow-brand-500/25">
-            <ShieldAlert className="w-7 h-7" />
-          </div>
+          <SnapFixLogo variant="icon" size="xl" className="mx-auto shadow-xl" />
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-display">
             Create SnapFix Account

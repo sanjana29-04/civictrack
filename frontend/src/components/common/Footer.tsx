@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldAlert, Heart, Github, ExternalLink, MapPin } from 'lucide-react';
+import { SnapFixLogo } from './SnapFixLogo';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,16 +10,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-navy-900">
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white">
-                <ShieldAlert className="w-5 h-5" />
-              </div>
-              <span className="text-lg font-bold text-white tracking-tight">SnapFix</span>
-            </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <SnapFixLogo variant="nav" showTagline={false} />
+            <p className="text-xs text-slate-400 leading-relaxed pt-1">
               Fixing our India together. The AI-assisted civic accountability platform empowering citizens through photographic evidence, duplicate-aware reporting, and transparent resolution tracking.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-xs text-emerald-400 font-semibold">
+            <div className="pt-1 flex items-center gap-2 text-xs text-emerald-400 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               🇮🇳 SnapFix • Fixing Our India Together
             </div>

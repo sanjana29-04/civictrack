@@ -5,6 +5,7 @@ import { analyticsService } from '../../services/analyticsService';
 import { Incident, IncidentMapMarker, CivicAnalytics } from '../../types';
 import { IncidentCard } from '../../components/incidents/IncidentCard';
 import { IncidentMap } from '../../components/map/IncidentMap';
+import { SnapFixLogo } from '../../components/common/SnapFixLogo';
 import {
   ShieldAlert,
   Search,
@@ -66,7 +67,12 @@ export const HomePage: React.FC = () => {
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-violet-600/25 via-fuchsia-500/20 to-transparent rounded-full blur-[130px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-500/25 via-teal-400/20 to-transparent rounded-full blur-[130px] pointer-events-none" />
 
-        <div className="relative max-w-5xl mx-auto text-center space-y-7 z-10">
+        <div className="relative max-w-5xl mx-auto text-center space-y-7 z-10 flex flex-col items-center">
+          {/* Official Brand Logo Badge */}
+          <div className="hover:scale-105 transition-transform duration-300">
+            <SnapFixLogo variant="badge" size="md" className="p-3 bg-white/95 rounded-3xl shadow-2xl shadow-emerald-500/20 border border-white/40 backdrop-blur-md" />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-violet-500/15 border border-emerald-400/40 text-emerald-300 text-xs font-extrabold backdrop-blur-md shadow-lg shadow-emerald-500/10">
             <span className="text-sm">🇮🇳</span>
             <span>SnapFix • Fixing Our India Together</span>

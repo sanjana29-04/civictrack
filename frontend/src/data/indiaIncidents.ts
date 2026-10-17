@@ -6,6 +6,7 @@ export interface IndiaIncidentItem extends Incident {
 }
 
 export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
+  // 1. Delhi - Pothole
   {
     id: 'inc-delhi-01',
     incidentNumber: 'CIV-2026-1011',
@@ -29,7 +30,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'New Delhi',
     state: 'Delhi',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/pothole_real.jpg',
     reporterId: 'user-delhi-01',
     reporterName: 'Aarav Malhotra',
     assignedTeam: 'Delhi PWD Central Rapid Response',
@@ -39,6 +40,8 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 36 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
   },
+
+  // 2. Delhi - Streetlights / Electric
   {
     id: 'inc-delhi-02',
     incidentNumber: 'CIV-2026-1012',
@@ -58,7 +61,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'New Delhi',
     state: 'Delhi',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/streetlight_real.jpg',
     reporterId: 'user-delhi-02',
     reporterName: 'Kavita Saxena',
     assignedTeam: 'BSES Emergency Power Response',
@@ -68,11 +71,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 72 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 10 * 3600 * 1000).toISOString(),
   },
+
+  // 3. Mumbai - Waterlogging
   {
     id: 'inc-mumbai-01',
     incidentNumber: 'CIV-2026-1013',
     title: 'Broken stormwater drain slab causing severe waterlogging on SV Road',
-    description: 'Collapsed concrete drain slab measuring 2x1 meters on SV Road. Heavy black water backing up onto the roadway, submerging the pedestrian footpath completely.',
+    description: 'Collapsed concrete drain slab measuring 2x1 meters on SV Road. Heavy water backing up onto the roadway, submerging the pedestrian footpath completely.',
     category: 'DRAINAGE_WATERLOGGING',
     categoryDisplayName: 'Drainage & Waterlogging',
     status: 'RESOLVED_AWAITING_VERIFICATION',
@@ -87,7 +92,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Mumbai',
     state: 'Maharashtra',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/waterlog_real.jpg',
     reporterId: 'user-mumbai-01',
     reporterName: 'Rohan Deshmukh',
     assignedTeam: 'BMC Stormwater Drainage K-West Ward',
@@ -98,6 +103,8 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     updatedAt: new Date(Date.now() - 6 * 3600 * 1000).toISOString(),
     resolvedAt: new Date(Date.now() - 6 * 3600 * 1000).toISOString(),
   },
+
+  // 4. Mumbai - Garbage
   {
     id: 'inc-mumbai-02',
     incidentNumber: 'CIV-2026-1014',
@@ -117,7 +124,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Mumbai',
     state: 'Maharashtra',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/garbage_real.jpg',
     reporterId: 'user-mumbai-02',
     reporterName: 'Sneha Sawant',
     supportCount: 29,
@@ -125,11 +132,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 20 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
   },
+
+  // 5. Mumbai - Public Park Damage
   {
     id: 'inc-mumbai-03',
     incidentNumber: 'CIV-2026-1015',
-    title: 'Cracked pedestrian promenade slab & broken railings near Marine Drive',
-    description: 'Granite sidewalk slabs displaced near the seawall with a missing 3-meter section of safety railing, creating fall danger for evening joggers.',
+    title: 'Cracked pedestrian promenade slab & broken public benches near Marine Drive',
+    description: 'Granite sidewalk slabs displaced near the seawall with broken public benches, creating fall danger for evening joggers.',
     category: 'PUBLIC_PROPERTY_DAMAGE',
     categoryDisplayName: 'Public Assets',
     status: 'UNDER_REVIEW',
@@ -143,7 +152,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Mumbai',
     state: 'Maharashtra',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/park_real.jpg',
     reporterId: 'user-mumbai-03',
     reporterName: 'Vikram Joshi',
     supportCount: 17,
@@ -151,6 +160,8 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
   },
+
+  // 6. Bengaluru - Pothole
   {
     id: 'inc-blr-01',
     incidentNumber: 'CIV-2026-1016',
@@ -170,7 +181,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Bengaluru',
     state: 'Karnataka',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/pothole_real.jpg',
     reporterId: 'user-blr-01',
     reporterName: 'Priya Sharma',
     assignedTeam: 'BBMP Major Roads Division',
@@ -180,15 +191,17 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 50 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
   },
+
+  // 7. Bengaluru - Water Pipe Leakage
   {
     id: 'inc-blr-02',
     incidentNumber: 'CIV-2026-1017',
-    title: 'Blocked drainage culvert cleared & verified on 12th Main Koramangala',
-    description: 'Silt and plastic waste excavated from stormwater conduit. Community confirmed that water flows smoothly even after heavy downpour.',
-    category: 'DRAINAGE_WATERLOGGING',
-    categoryDisplayName: 'Drainage & Waterlogging',
-    status: 'CLOSED',
-    statusDisplayName: 'Closed & Verified',
+    title: 'High-pressure water distribution pipe burst on 12th Main Koramangala',
+    description: 'Municipal supply main cracked open during morning pumping cycle. Clean treated drinking water surging onto road and flooding driveways.',
+    category: 'WATER_SUPPLY_LEAKAGE',
+    categoryDisplayName: 'Water Supply & Leakage',
+    status: 'RESOLVED_AWAITING_VERIFICATION',
+    statusDisplayName: 'Awaiting Citizen Check',
     priority: 'HIGH',
     aiConfidence: 0.92,
     latitude: 12.9352,
@@ -198,20 +211,22 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Bengaluru',
     state: 'Karnataka',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/waterpipe_real.jpg',
     reporterId: 'user-blr-01',
     reporterName: 'Priya Sharma',
     supportCount: 31,
     duplicateCount: 2,
-    officialReferenceNumber: 'BBMP-SWD-2026-4421',
+    officialReferenceNumber: 'BWSSB-WTR-2026-4421',
     createdAt: new Date(Date.now() - 90 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
-    closedAt: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
+    resolvedAt: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
   },
+
+  // 8. Bengaluru - Streetlight
   {
     id: 'inc-blr-03',
     incidentNumber: 'CIV-2026-1018',
-    title: 'Defective high-mast streetlight leaving 100ft Road intersection dark',
+    title: 'Defective streetlight cluster leaving 100ft Road intersection dark',
     description: 'Complete blackout of 4-arm high-mast light at busy junction. Pedestrians cannot see oncoming traffic at night.',
     category: 'STREETLIGHTS',
     categoryDisplayName: 'Streetlights & Electrical',
@@ -226,7 +241,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Bengaluru',
     state: 'Karnataka',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/streetlight_real.jpg',
     reporterId: 'user-blr-02',
     reporterName: 'Naveen Kumar',
     assignedTeam: 'BESCOM Electrical Ward 80',
@@ -235,13 +250,15 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 28 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 7 * 3600 * 1000).toISOString(),
   },
+
+  // 9. Bengaluru - Open Manhole
   {
     id: 'inc-blr-04',
     incidentNumber: 'CIV-2026-1019',
     title: 'Open uncovered manhole on pedestrian path near HSR Sector 2',
-    description: 'Cast iron manhole lid missing for over 5 days. Hidden by overgrown grass on pedestrian walkway, severe injury hazard.',
+    description: 'Cast iron manhole lid missing for over 5 days. Makeshift warning tree branch placed inside hole to prevent pedestrians and cyclists from falling in.',
     category: 'FOOTPATHS_ACCESSIBILITY',
-    categoryDisplayName: 'Footpaths & Safety',
+    categoryDisplayName: 'Footpaths & Hazards',
     status: 'IN_PROGRESS',
     statusDisplayName: 'In Progress',
     priority: 'CRITICAL',
@@ -253,7 +270,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Bengaluru',
     state: 'Karnataka',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1599818815779-7128532442ee?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/manhole_real.jpg',
     reporterId: 'user-blr-03',
     reporterName: 'Ananya Rao',
     assignedTeam: 'BWSSB Emergency Sanitary Wing',
@@ -262,6 +279,8 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 18 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
   },
+
+  // 10. Hyderabad - Pothole
   {
     id: 'inc-hyd-01',
     incidentNumber: 'CIV-2026-1020',
@@ -280,7 +299,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Hyderabad',
     state: 'Telangana',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/pothole_real.jpg',
     reporterId: 'user-hyd-01',
     reporterName: 'Sai Teja Reddy',
     assignedTeam: 'GHMC Cyberabad Engineering Cell',
@@ -290,6 +309,8 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 30 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
   },
+
+  // 11. Hyderabad - Streetlights / Wiring
   {
     id: 'inc-hyd-02',
     incidentNumber: 'CIV-2026-1021',
@@ -308,7 +329,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Hyderabad',
     state: 'Telangana',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/streetlight_real.jpg',
     reporterId: 'user-hyd-02',
     reporterName: 'Mohammed Imran',
     supportCount: 28,
@@ -316,11 +337,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 40 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 8 * 3600 * 1000).toISOString(),
   },
+
+  // 12. Chennai - Waterlogging
   {
     id: 'inc-chn-01',
     incidentNumber: 'CIV-2026-1022',
-    title: 'Broken storm drain concrete grill with exposed rusted rebar on Usman Road',
-    description: 'Cracked reinforced concrete drainage slab over roadside gutter. Sharp rebar ends sticking out onto shopping lane.',
+    title: 'Severe monsoon water stagnation & submerged road on Usman Road',
+    description: 'Standing stormwater up to 1.5 feet deep flooding the shopping corridor. Vehicles stranded and retail shops waterlogged after continuous rains.',
     category: 'DRAINAGE_WATERLOGGING',
     categoryDisplayName: 'Drainage & Waterlogging',
     status: 'IN_PROGRESS',
@@ -334,7 +357,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Chennai',
     state: 'Tamil Nadu',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/waterlog_real.jpg',
     reporterId: 'user-chn-01',
     reporterName: 'Karthik Ramanathan',
     assignedTeam: 'Greater Chennai Corporation Zone 10',
@@ -344,6 +367,8 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 44 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
   },
+
+  // 13. Chennai - Streetlight
   {
     id: 'inc-chn-02',
     incidentNumber: 'CIV-2026-1023',
@@ -362,7 +387,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Chennai',
     state: 'Tamil Nadu',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/streetlight_real.jpg',
     reporterId: 'user-chn-02',
     reporterName: 'Deepa Natarajan',
     supportCount: 15,
@@ -370,13 +395,15 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 16 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
   },
+
+  // 14. Kolkata - Open Manhole / Footpath
   {
     id: 'inc-kol-01',
     incidentNumber: 'CIV-2026-1024',
-    title: 'Displaced cobblestone pavement & tripping hazard on Park Street',
-    description: 'Uneven historical footpath stones popped out after utility pipe digging. Elderly pedestrians regularly tripping during evening hours.',
+    title: 'Displaced pavement slab & uncovered drain hole on Park Street',
+    description: 'Footpath cavity exposed after utility pipe digging. Makeshift tree branch barrier erected by shopkeepers to prevent pedestrian falls.',
     category: 'FOOTPATHS_ACCESSIBILITY',
-    categoryDisplayName: 'Footpaths & Access',
+    categoryDisplayName: 'Footpaths & Hazards',
     status: 'UNDER_REVIEW',
     statusDisplayName: 'Under Review',
     priority: 'MEDIUM',
@@ -388,7 +415,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Kolkata',
     state: 'West Bengal',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1599818815779-7128532442ee?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/manhole_real.jpg',
     reporterId: 'user-kol-01',
     reporterName: 'Sourav Banerjee',
     supportCount: 22,
@@ -396,11 +423,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 26 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 6 * 3600 * 1000).toISOString(),
   },
+
+  // 15. Kolkata - Garbage
   {
     id: 'inc-kol-02',
     incidentNumber: 'CIV-2026-1025',
-    title: 'Clogged municipal canal and construction debris dumping in Salt Lake Sector V',
-    description: 'Dumping of plaster and cement sacks into roadside canal causing sewage overflow into IT campus access road.',
+    title: 'Overflowing municipal green dumpster and roadside waste in Salt Lake',
+    description: 'Uncollected domestic and commercial waste spilling 15 meters along the curb, attracting stray cattle and blocking half of the access street.',
     category: 'GARBAGE_SANITATION',
     categoryDisplayName: 'Garbage & Sanitation',
     status: 'IN_PROGRESS',
@@ -414,7 +443,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Kolkata',
     state: 'West Bengal',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/garbage_real.jpg',
     reporterId: 'user-kol-02',
     reporterName: 'Ritika Sen',
     assignedTeam: 'Bidhannagar Municipal Conservancy',
@@ -423,13 +452,15 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 32 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 8 * 3600 * 1000).toISOString(),
   },
+
+  // 16. Pune - Pothole
   {
     id: 'inc-pun-01',
     incidentNumber: 'CIV-2026-1026',
-    title: 'Unbarricaded open utility trench on FC Road near Deccan Gymkhana',
-    description: 'Deep 4-foot excavation left without reflective warning cones or safety mesh. Heavy pedestrian student footfall.',
+    title: 'Deep road crater and broken bitumen on FC Road near Deccan Gymkhana',
+    description: 'Sharp-edged asphalt crater causing frequent bike skids and tyre punctures right in front of busy college cafes.',
     category: 'ROADS_POTHOLES',
-    categoryDisplayName: 'Roads & Safety',
+    categoryDisplayName: 'Roads & Potholes',
     status: 'IN_PROGRESS',
     statusDisplayName: 'In Progress',
     priority: 'CRITICAL',
@@ -441,7 +472,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Pune',
     state: 'Maharashtra',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/pothole_real.jpg',
     reporterId: 'user-pun-01',
     reporterName: 'Tanvi Kulkarni',
     assignedTeam: 'PMC Road Maintenance Zone 4',
@@ -451,11 +482,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 22 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
   },
+
+  // 17. Pune - Broken Park / Public Asset
   {
     id: 'inc-pun-02',
     incidentNumber: 'CIV-2026-1027',
-    title: 'Fallen heavy tree branch blocking public sidewalk in Koregaon Park',
-    description: 'Large banyan tree branch snapped during squall, crushing metal trash bin and obstructing disabled access ramp.',
+    title: 'Damaged children playground equipment & rusted swings in municipal park',
+    description: 'Rusted chain swings with broken seats and overgrown weeds in community park, leaving neighborhood children without a safe play area.',
     category: 'PUBLIC_PROPERTY_DAMAGE',
     categoryDisplayName: 'Public Assets',
     status: 'CONFIRMED',
@@ -465,11 +498,11 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     latitude: 18.5362,
     longitude: 73.8940,
     address: 'North Main Road, Koregaon Park',
-    landmark: 'Lane 5 Crossing',
+    landmark: 'Lane 5 Children Garden',
     city: 'Pune',
     state: 'Maharashtra',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/park_real.jpg',
     reporterId: 'user-pun-02',
     reporterName: 'Aditya Shinde',
     supportCount: 14,
@@ -477,25 +510,27 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
   },
+
+  // 18. Ahmedabad - Pothole / Road Barrier
   {
     id: 'inc-ahm-01',
     incidentNumber: 'CIV-2026-1028',
-    title: 'Damaged median concrete barrier on SG Highway near Prahlad Nagar',
-    description: 'Shattered crash divider with exposed rebar protruding into the fast lane of SG Highway after a vehicle impact.',
+    title: 'Severe road surface craters on SG Highway service road near Prahlad Nagar',
+    description: 'Clusters of large pothole cavities tearing up the service road asphalt after truck movement, causing gridlock during rush hours.',
     category: 'ROADS_POTHOLES',
-    categoryDisplayName: 'Roads & Dividers',
+    categoryDisplayName: 'Roads & Potholes',
     status: 'IN_PROGRESS',
     statusDisplayName: 'In Progress',
     priority: 'HIGH',
     aiConfidence: 0.93,
     latitude: 23.0125,
     longitude: 72.5020,
-    address: 'Sarkhej - Gandhinagar Highway',
+    address: 'Sarkhej - Gandhinagar Highway Service Road',
     landmark: 'Near Prahlad Nagar Garden Underpass',
     city: 'Ahmedabad',
     state: 'Gujarat',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/pothole_real.jpg',
     reporterId: 'user-ahm-01',
     reporterName: 'Mehul Patel',
     assignedTeam: 'AMC Engineering South-West Zone',
@@ -504,11 +539,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
   },
+
+  // 19. Jaipur - Water Supply Pipe Leakage
   {
     id: 'inc-jai-01',
     incidentNumber: 'CIV-2026-1029',
     title: 'Underground potable water pipeline burst spewing water on MI Road',
-    description: 'High-pressure clean water main line burst. Thousands of gallons flooding commercial street while local residential colonies experience zero water supply.',
+    description: 'High-pressure clean water main line burst. Thousands of liters flooding commercial street while local residential colonies experience zero water supply.',
     category: 'WATER_SUPPLY_LEAKAGE',
     categoryDisplayName: 'Water Supply & Leakage',
     status: 'RESOLVED_AWAITING_VERIFICATION',
@@ -522,7 +559,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Jaipur',
     state: 'Rajasthan',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/waterpipe_real.jpg',
     reporterId: 'user-jai-01',
     reporterName: 'Rajendra Singh Rathore',
     assignedTeam: 'PHED Rajasthan Urban Water Wing',
@@ -533,11 +570,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     updatedAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
     resolvedAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
   },
+
+  // 20. Lucknow - Streetlight
   {
     id: 'inc-luc-01',
     incidentNumber: 'CIV-2026-1030',
-    title: 'Damaged heritage street lamp post knocked by transport vehicle in Hazratganj',
-    description: 'Victorian-style ornamental iron post bent at 45 degrees. Base bolts sheared off, resting precariously on overhead awning.',
+    title: 'Tangled wiring & non-operational street lamps in Hazratganj promenade',
+    description: 'Electric junction box uncovered with twisted wires and 6 dead streetlights creating a dark zone along the heritage shopping lane.',
     category: 'STREETLIGHTS',
     categoryDisplayName: 'Streetlights & Electrical',
     status: 'IN_PROGRESS',
@@ -551,7 +590,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Lucknow',
     state: 'Uttar Pradesh',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/streetlight_real.jpg',
     reporterId: 'user-luc-01',
     reporterName: 'Alok Srivastava',
     assignedTeam: 'LMC Electrical Maintenance',
@@ -560,11 +599,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 19 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
   },
+
+  // 21. Kochi - Waterlogging
   {
     id: 'inc-koc-01',
     incidentNumber: 'CIV-2026-1031',
-    title: 'Severe road erosion & monsoon drain collapse along MG Road',
-    description: 'Coastal rainwater wash-out causing sub-base soil erosion along roadside ditch. Walkway cracking under pedestrian footsteps.',
+    title: 'Severe road waterlogging & submerged carriage-way along MG Road',
+    description: 'Rainwater buildup over knee height blocking traffic near Marine Drive. Commuters stranded and shops facing water ingress.',
     category: 'DRAINAGE_WATERLOGGING',
     categoryDisplayName: 'Drainage & Waterlogging',
     status: 'ASSIGNED',
@@ -578,7 +619,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Kochi',
     state: 'Kerala',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/waterlog_real.jpg',
     reporterId: 'user-koc-01',
     reporterName: 'Anand Varma',
     assignedTeam: 'Kochi Municipal Corporation Engineering',
@@ -587,11 +628,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 40 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 9 * 3600 * 1000).toISOString(),
   },
+
+  // 22. Chandigarh - Park & Public Assets
   {
     id: 'inc-chd-01',
     incidentNumber: 'CIV-2026-1032',
-    title: 'Damaged public amphitheater tiles & broken drainage in Sector 17 Plaza',
-    description: 'Chipped concrete tiles and clogged floor drainage creating standing dirty water inside central civic amphitheater.',
+    title: 'Broken benches & neglected landscape in Sector 17 Plaza public park',
+    description: 'Damaged stone seating benches with rusted metal frames and overgrown untended weeds inside the civic square.',
     category: 'PUBLIC_PROPERTY_DAMAGE',
     categoryDisplayName: 'Public Assets',
     status: 'UNDER_REVIEW',
@@ -605,7 +648,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Chandigarh',
     state: 'Chandigarh (UT)',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/park_real.jpg',
     reporterId: 'user-chd-01',
     reporterName: 'Harpreet Singh Dhillon',
     supportCount: 16,
@@ -613,11 +656,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 15 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
   },
+
+  // 23. Guwahati - Waterlogging
   {
     id: 'inc-guw-01',
     incidentNumber: 'CIV-2026-1033',
-    title: 'Landslide silt runoff choking stormwater drain on GS Road',
-    description: 'Hillslope earth and bamboo debris washed down by heavy rains clogging main roadside drain conduit. Water overflowing into commercial shopfronts.',
+    title: 'Urban flash flood waterlogging choking GS Road commercial zone',
+    description: 'Stormwater overflow submerging both lanes of GS Road. Auto-rickshaws and bikes wading through knee-deep water near Christian Basti.',
     category: 'DRAINAGE_WATERLOGGING',
     categoryDisplayName: 'Drainage & Waterlogging',
     status: 'IN_PROGRESS',
@@ -631,7 +676,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Guwahati',
     state: 'Assam',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/waterlog_real.jpg',
     reporterId: 'user-guw-01',
     reporterName: 'Pranab Saikia',
     assignedTeam: 'GMC Conservancy & Public Works',
@@ -640,11 +685,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 28 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 6 * 3600 * 1000).toISOString(),
   },
+
+  // 24. Indore - Waste & Garbage
   {
     id: 'inc-ind-01',
     incidentNumber: 'CIV-2026-1034',
-    title: 'Broken waste segregation bin lid causing garbage spill at Chhappan Dukan',
-    description: 'Hydraulic lid broken on smart municipal bin at famous food street. Dogs and rodents scattering paper plates and leftover food.',
+    title: 'Overflowing municipal green bin and litter spill near 56 Dukan',
+    description: 'High-volume waste overflowing onto the street from municipal bins following late evening rush. Requires immediate cleanup sweep.',
     category: 'GARBAGE_SANITATION',
     categoryDisplayName: 'Garbage & Sanitation',
     status: 'CONFIRMED',
@@ -658,7 +705,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Indore',
     state: 'Madhya Pradesh',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/garbage_real.jpg',
     reporterId: 'user-ind-01',
     reporterName: 'Divya Agrawal',
     supportCount: 30,
@@ -666,11 +713,13 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 21 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
   },
+
+  // 25. Bhopal - Streetlight
   {
     id: 'inc-bho-01',
     incidentNumber: 'CIV-2026-1035',
-    title: 'Non-operational streetlights along curving VIP Road near Upper Lake',
-    description: 'Eight consecutive streetlight poles dark along sharp road curve next to the lake. Extreme accident risk at night.',
+    title: 'Cluster of dark streetlights along curving VIP Road near Upper Lake',
+    description: 'Eight consecutive streetlight poles dark along sharp road curve next to the lake. Extreme accident risk for two-wheelers at night.',
     category: 'STREETLIGHTS',
     categoryDisplayName: 'Streetlights & Electrical',
     status: 'IN_PROGRESS',
@@ -684,7 +733,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Bhopal',
     state: 'Madhya Pradesh',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/streetlight_real.jpg',
     reporterId: 'user-bho-01',
     reporterName: 'Gaurav Tiwari',
     assignedTeam: 'BMC Electrical Division Bhopal',
@@ -693,13 +742,15 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     createdAt: new Date(Date.now() - 35 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
   },
+
+  // 26. Varanasi - Open Manhole & Sewer Leak
   {
     id: 'inc-var-01',
     incidentNumber: 'CIV-2026-1036',
-    title: 'Overflowing sewer line and damaged stone pathway near Dashashwamedh Ghat',
-    description: 'Ancient stone pathway cracked with sewage seepage from outdated brick sewer line. Slipperiness causing pilgrims to lose footing on ghat approach.',
-    category: 'DRAINAGE_WATERLOGGING',
-    categoryDisplayName: 'Drainage & Waterlogging',
+    title: 'Uncovered sewer manhole on crowded Dashashwamedh Ghat approach',
+    description: 'Open sewer cavity on ancient stone pathway. Makeshift wooden pole and red fabric marker placed to prevent pilgrims from falling into the dark hole.',
+    category: 'FOOTPATHS_ACCESSIBILITY',
+    categoryDisplayName: 'Footpaths & Hazards',
     status: 'CONFIRMED',
     statusDisplayName: 'Confirmed',
     priority: 'HIGH',
@@ -711,7 +762,7 @@ export const PAN_INDIA_INCIDENTS: IndiaIncidentItem[] = [
     city: 'Varanasi',
     state: 'Uttar Pradesh',
     isApproximateLocation: false,
-    primaryPhotoUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+    primaryPhotoUrl: '/incidents/manhole_real.jpg',
     reporterId: 'user-var-01',
     reporterName: 'Abhishek Pandey',
     supportCount: 48,
@@ -752,4 +803,6 @@ export const POPULAR_CITIES = [
   { name: 'Chandigarh', coords: [30.7333, 76.7794] as [number, number], zoom: 12, emoji: '🌹' },
   { name: 'Guwahati', coords: [26.1445, 91.7362] as [number, number], zoom: 12, emoji: '🦏' },
   { name: 'Indore', coords: [22.7196, 75.8577] as [number, number], zoom: 12, emoji: '✨' },
+  { name: 'Bhopal', coords: [23.2599, 77.4126] as [number, number], zoom: 12, emoji: '🏞️' },
+  { name: 'Varanasi', coords: [25.3176, 82.9739] as [number, number], zoom: 12, emoji: '🕉️' },
 ];
