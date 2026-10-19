@@ -143,8 +143,9 @@ export const Navbar: React.FC = () => {
 
             {/* Report Issue CTA button */}
             <Link
-              to="/report"
-              className="px-4 py-2.5 rounded-2xl text-xs font-bold bg-gradient-to-r from-brand-600 via-brand-500 to-teal-500 hover:from-brand-500 hover:to-teal-400 text-white shadow-md shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 group"
+              to={user ? '/report' : '/login'}
+              state={!user ? { from: { pathname: '/report' } } : undefined}
+              className="px-4 py-2.5 rounded-2xl text-xs font-bold bg-gradient-to-r from-brand-600 via-brand-500 to-teal-500 hover:brightness-105 active:brightness-95 text-white shadow-md shadow-brand-500/25 hover:scale-105 active:scale-95 transition-transform duration-150 flex items-center gap-2 group outline-none select-none focus:outline-none"
             >
               <PlusCircle className="w-4 h-4 group-hover:rotate-90 transition-transform duration-200" />
               <span>Report Problem</span>

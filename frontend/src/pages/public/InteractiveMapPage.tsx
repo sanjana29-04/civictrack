@@ -7,8 +7,10 @@ import { CategoryBadge } from '../../components/common/CategoryBadge';
 import { PriorityBadge } from '../../components/common/PriorityBadge';
 import { Link } from 'react-router-dom';
 import { MapPin, Search, Filter, Loader2, ThumbsUp, ChevronRight } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 export const InteractiveMapPage: React.FC = () => {
+  const { user } = useAuth();
   const [markers, setMarkers] = useState<IncidentMapMarker[]>([]);
   const [filteredMarkers, setFilteredMarkers] = useState<IncidentMapMarker[]>([]);
   const [loading, setLoading] = useState(true);
@@ -89,8 +91,9 @@ export const InteractiveMapPage: React.FC = () => {
         </div>
 
         <Link
-          to="/report"
-          className="self-start sm:self-auto px-5 py-2.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:from-emerald-400 hover:to-violet-500 text-white text-xs font-extrabold rounded-2xl shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all"
+          to={user ? '/report' : '/login'}
+          state={!user ? { from: { pathname: '/report' } } : undefined}
+          className="self-start sm:self-auto px-5 py-2.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:brightness-105 active:brightness-95 text-white text-xs font-extrabold rounded-2xl shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-transform duration-150 outline-none select-none focus:outline-none"
         >
           + Snap & Report Here
         </Link>

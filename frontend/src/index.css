@@ -5,15 +5,39 @@
 @tailwind utilities;
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
   html, body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent !important;
   }
+
   body {
     @apply bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white font-sans;
   }
+
+  /* Remove default black outline/flash on clicks */
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
   h1, h2, h3, h4, .font-display {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   }

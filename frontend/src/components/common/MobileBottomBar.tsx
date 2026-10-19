@@ -37,11 +37,12 @@ export const MobileBottomBar: React.FC = () => {
 
         {/* Central Snap CTA Button */}
         <Link
-          to="/report"
-          className="relative -top-3.5 flex flex-col items-center group"
+          to={user ? '/report' : '/login'}
+          state={!user ? { from: { pathname: '/report' } } : undefined}
+          className="relative -top-3.5 flex flex-col items-center group outline-none select-none focus:outline-none"
           aria-label="Report civic issue"
         >
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-violet-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30 group-active:scale-95 transition-transform border-2 border-white">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-violet-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:brightness-105 group-active:scale-95 transition-transform border-2 border-white">
             <Plus className="w-6 h-6 stroke-[3]" />
           </div>
           <span className="text-[10px] font-extrabold text-emerald-700 tracking-tight mt-0.5">

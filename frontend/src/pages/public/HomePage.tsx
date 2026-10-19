@@ -6,6 +6,7 @@ import { Incident, IncidentMapMarker, CivicAnalytics } from '../../types';
 import { IncidentCard } from '../../components/incidents/IncidentCard';
 import { IncidentMap } from '../../components/map/IncidentMap';
 import { SnapFixLogo } from '../../components/common/SnapFixLogo';
+import { useAuth } from '../../context/AuthContext';
 import {
   ShieldAlert,
   Search,
@@ -22,6 +23,7 @@ import {
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
+  const { user } = useAuth();
   const [recentIncidents, setRecentIncidents] = useState<Incident[]>([]);
   const [mapMarkers, setMapMarkers] = useState<IncidentMapMarker[]>([]);
   const [analytics, setAnalytics] = useState<CivicAnalytics | null>(null);
@@ -138,8 +140,9 @@ export const HomePage: React.FC = () => {
           {/* Primary Action Buttons */}
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto px-2">
             <Link
-              to="/report"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:from-emerald-400 hover:to-violet-500 text-white font-extrabold text-sm shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2.5 transition-all duration-200 active:scale-95"
+              to={user ? '/report' : '/login'}
+              state={!user ? { from: { pathname: '/report' } } : undefined}
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:brightness-105 active:brightness-95 text-white font-extrabold text-sm shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2.5 transition-transform duration-150 active:scale-95 outline-none select-none focus:outline-none"
             >
               <PlusCircle className="w-5 h-5 shrink-0" />
               <span>Snap & Report Problem</span>
