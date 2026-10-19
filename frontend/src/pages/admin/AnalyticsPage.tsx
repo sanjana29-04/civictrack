@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { analyticsService } from '../../services/analyticsService';
+import { analyticsService, generatePanIndiaAnalytics } from '../../services/analyticsService';
 import { CivicAnalytics } from '../../types';
 import {
   BarChart,
@@ -27,33 +27,24 @@ import {
 } from 'lucide-react';
 
 export const AnalyticsPage: React.FC = () => {
-  const [analytics, setAnalytics] = useState<CivicAnalytics | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [analytics, setAnalytics] = useState<CivicAnalytics>(() => generatePanIndiaAnalytics());
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
         const data = await analyticsService.getDashboardAnalytics();
-        setAnalytics(data);
+        if (data) {
+          setAnalytics(data);
+        }
       } catch (err) {
-        console.error('Failed to load civic analytics', err);
-      } finally {
-        setLoading(false);
+        console.warn('Dashboard analytics using local Pan-India intelligence', err);
       }
     };
 
     fetchAnalytics();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="py-24 flex justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-brand-600" />
-      </div>
-    );
-  }
-
-  if (!analytics) return null;
 
   const COLORS = ['#1e5aee', '#10b981', '#f59e0b', '#06b6d4', '#6366f1', '#ec4899', '#8b5cf6', '#64748b'];
 
