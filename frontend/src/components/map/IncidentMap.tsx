@@ -87,8 +87,25 @@ const createPinIcon = (status: string, priority: string) => {
 const ChangeView: React.FC<{ center: [number, number]; zoom: number }> = ({ center, zoom }) => {
   const map = useMap();
   useEffect(() => {
-    map.setView(center, zoom, { animate: true, duration: 1 });
+    map.invalidateSize();
+    map.setView(center, zoom, { animate: true, duration: 0.8 });
   }, [center, zoom, map]);
+  return null;
+};
+
+// Component to handle initial render size invalidation
+const MapAutoResizer: React.FC = () => {
+  const map = useMap();
+  useEffect(() => {
+    const t1 = setTimeout(() => map.invalidateSize(), 100);
+    const t2 = setTimeout(() => map.invalidateSize(), 400);
+    const t3 = setTimeout(() => map.invalidateSize(), 1000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [map]);
   return null;
 };
 
@@ -103,6 +120,15 @@ export const IncidentMap: React.FC<Props> = ({
   const [currentZoom, setCurrentZoom] = React.useState<number>(zoom);
   const [activeCity, setActiveCity] = React.useState<string>('All India');
 
+  // Synchronize when parent passes new center or zoom (e.g. clicking incident in sidebar)
+  useEffect(() => {
+    setCurrentCenter(center);
+  }, [center[0], center[1]]);
+
+  useEffect(() => {
+    setCurrentZoom(zoom);
+  }, [zoom]);
+
   const handleCitySelect = (city: typeof POPULAR_CITIES[0]) => {
     setActiveCity(city.name);
     setCurrentCenter(city.coords);
@@ -110,9 +136,9 @@ export const IncidentMap: React.FC<Props> = ({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="h-full flex flex-col space-y-3">
       {/* City Quick-Jump Bar */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs font-semibold">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs font-semibold shrink-0">
         <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider pl-1 shrink-0 flex items-center gap-1">
           <span>⚡ Pan-India:</span>
         </span>
@@ -136,19 +162,21 @@ export const IncidentMap: React.FC<Props> = ({
         })}
       </div>
 
-      <div style={{ height }} className="w-full rounded-3xl overflow-hidden border border-slate-200 shadow-md relative z-0">
+      <div className="flex-1 w-full min-h-[480px] sm:min-h-[540px] rounded-3xl overflow-hidden border border-slate-200 shadow-md relative z-0">
         <MapContainer
           center={currentCenter}
           zoom={currentZoom}
           scrollWheelZoom={true}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '100%', height: '100%', minHeight: '480px' }}
         >
           <ChangeView center={currentCenter} zoom={currentZoom} />
+          <MapAutoResizer />
           <TileLayer
-            attribution='&copy; <a href="https://www.esri.com/">Esri</a>, HERE, Garmin, USGS, OpenStreetMap contributors'
-            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}.png"
             maxZoom={19}
           />
+
 
           {markers.map((marker) => {
             if (!marker.latitude || !marker.longitude) return null;

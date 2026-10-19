@@ -161,11 +161,11 @@ export const InteractiveMapPage: React.FC = () => {
       </div>
 
       {/* Main Map + Sidebar Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:h-[650px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[560px] lg:h-[680px]">
         {/* Map View */}
-        <div className="lg:col-span-2 h-[380px] sm:h-[480px] lg:h-full">
+        <div className="lg:col-span-2 min-h-[480px] sm:min-h-[540px] lg:h-full flex flex-col">
           {loading ? (
-            <div className="h-full bg-slate-100 rounded-3xl flex items-center justify-center">
+            <div className="h-full min-h-[480px] bg-slate-100 rounded-3xl flex items-center justify-center">
               <Loader2 className="w-8 h-8 animate-spin text-brand-600" />
             </div>
           ) : (
@@ -177,6 +177,7 @@ export const InteractiveMapPage: React.FC = () => {
             />
           )}
         </div>
+
 
         {/* Incident List Drawer */}
         <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm flex flex-col h-[480px] lg:h-full overflow-hidden">
