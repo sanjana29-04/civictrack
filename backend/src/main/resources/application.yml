@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: civictrack-backend
+    name: snapfix-backend
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
   servlet:
