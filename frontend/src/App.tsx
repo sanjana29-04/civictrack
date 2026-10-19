@@ -7,6 +7,7 @@ import { NotificationProvider } from './context/NotificationContext';
 // Common Components
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { MobileBottomBar } from './components/common/MobileBottomBar';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 
 // Public Pages
@@ -52,7 +53,7 @@ export default function App() {
           <BrowserRouter>
             <div className="flex flex-col min-h-screen">
               <Navbar />
-              <main className="flex-1">
+              <main className="flex-1 pb-16 md:pb-0">
                 <Routes>
                   {/* Public routes */}
                   <Route path="/" element={<HomePage />} />
@@ -155,6 +156,7 @@ export default function App() {
                 </Routes>
               </main>
               <Footer />
+              <MobileBottomBar />
             </div>
           </BrowserRouter>
         </NotificationProvider>

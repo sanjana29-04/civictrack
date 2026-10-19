@@ -254,14 +254,22 @@ export const Navbar: React.FC = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile Actions: Quick Snap + Hamburger */}
+          <div className="flex items-center gap-2 md:hidden">
+            <Link
+              to="/report"
+              className="px-3 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 text-white shadow-sm shadow-emerald-500/20 flex items-center gap-1.5 active:scale-95 transition-transform"
+            >
+              <PlusCircle className="w-3.5 h-3.5" />
+              <span>Snap</span>
+            </Link>
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-navy-900 hover:bg-slate-100"
+              className="p-2 rounded-xl text-slate-700 hover:text-navy-900 hover:bg-slate-100 border border-slate-200/90 active:scale-95 transition-all"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-slate-800" /> : <Menu className="w-5 h-5 text-slate-800" />}
             </button>
           </div>
         </div>
@@ -269,83 +277,121 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3">
-          <Link
-            to="/explore"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50"
-          >
-            Explore Issues
-          </Link>
-          <Link
-            to="/map"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50"
-          >
-            Interactive Live Map
-          </Link>
-          <Link
-            to="/how-it-works"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50"
-          >
-            How It Works
-          </Link>
-          <Link
-            to="/analytics"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50"
-          >
-            Civic Analytics
-          </Link>
+        <div className="md:hidden border-b border-slate-200/90 bg-white/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 shadow-xl animate-in slide-in-from-top-3 duration-200">
+          <div className="flex items-center justify-between px-1 py-1 text-xs font-bold text-slate-500 border-b border-slate-100">
+            <span>🇮🇳 SnapFix Mobile Menu</span>
+            <span className="text-emerald-600 font-extrabold flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              26+ Cities Active
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 pt-1">
+            <Link
+              to="/explore"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`p-3 rounded-2xl border text-xs font-bold flex flex-col gap-1 transition-all ${
+                isActive('/explore') ? 'bg-violet-50 border-violet-300 text-violet-800' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+              }`}
+            >
+              <span className="text-base">🔍</span>
+              <span>Explore Issues</span>
+            </Link>
+
+            <Link
+              to="/map"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`p-3 rounded-2xl border text-xs font-bold flex flex-col gap-1 transition-all ${
+                isActive('/map') ? 'bg-violet-50 border-violet-300 text-violet-800' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+              }`}
+            >
+              <span className="text-base">🗺️</span>
+              <span>Live India Map</span>
+            </Link>
+
+            <Link
+              to="/how-it-works"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`p-3 rounded-2xl border text-xs font-bold flex flex-col gap-1 transition-all ${
+                isActive('/how-it-works') ? 'bg-violet-50 border-violet-300 text-violet-800' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+              }`}
+            >
+              <span className="text-base">⚡</span>
+              <span>How It Works</span>
+            </Link>
+
+            <Link
+              to="/analytics"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`p-3 rounded-2xl border text-xs font-bold flex flex-col gap-1 transition-all ${
+                isActive('/analytics') ? 'bg-violet-50 border-violet-300 text-violet-800' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+              }`}
+            >
+              <span className="text-base">📊</span>
+              <span>Civic Analytics</span>
+            </Link>
+          </div>
+
           <Link
             to="/report"
             onClick={() => setMobileMenuOpen(false)}
-            className="block w-full text-center px-4 py-2.5 rounded-xl font-semibold bg-brand-600 text-white"
+            className="block w-full text-center py-3 rounded-2xl font-extrabold text-xs bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 text-white shadow-lg shadow-emerald-500/25 active:scale-98 transition-all"
           >
-            + Report An Issue
+            📸 Snap & Report Problem Now
           </Link>
 
           {user ? (
-            <div className="pt-3 border-t border-slate-200 space-y-2">
-              <p className="text-xs font-semibold text-slate-500 uppercase px-3">Signed In as {user.fullName}</p>
-              <Link
-                to="/dashboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50"
-              >
-                Citizen Dashboard
-              </Link>
-              <Link
-                to="/my-reports"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50"
-              >
-                My Reports
-              </Link>
+            <div className="pt-3 border-t border-slate-100 space-y-2">
+              <div className="flex items-center gap-2 px-2 py-1 bg-slate-50 rounded-xl">
+                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center shrink-0">
+                  {user.fullName ? user.fullName.charAt(0).toUpperCase() : 'U'}
+                </div>
+                <div className="truncate">
+                  <p className="text-xs font-bold text-navy-900 truncate">{user.fullName}</p>
+                  <p className="text-[10px] text-slate-500 truncate">{user.email}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <Link
+                  to="/dashboard"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 text-center"
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  to="/my-reports"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 text-center"
+                >
+                  My Reports
+                </Link>
+              </div>
+
               <button
                 onClick={() => {
                   handleLogout();
                   setMobileMenuOpen(false);
                 }}
-                className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"
+                className="w-full text-center py-2 text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 rounded-xl transition-colors mt-2"
               >
                 Sign Out
               </button>
             </div>
           ) : (
-            <div className="pt-3 border-t border-slate-200 flex gap-2">
+            <div className="pt-3 border-t border-slate-100 flex gap-2">
               <Link
                 to="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-slate-300 text-slate-700"
+                className="flex-1 text-center py-2.5 text-xs font-bold rounded-2xl border border-slate-300 text-slate-700 bg-slate-50 active:bg-slate-100 transition-colors"
               >
                 Log In
               </Link>
               <Link
                 to="/register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-brand-600 text-white"
+                className="flex-1 text-center py-2.5 text-xs font-bold rounded-2xl bg-gradient-to-r from-brand-600 to-teal-600 text-white shadow-md active:scale-98 transition-all"
               >
                 Register
               </Link>

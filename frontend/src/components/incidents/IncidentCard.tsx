@@ -47,24 +47,24 @@ export const IncidentCard: React.FC<Props> = ({ incident }) => {
           <PriorityBadge priority={incident.priority} />
         </div>
 
-        {/* City Location Tag */}
-        <div className="absolute bottom-2.5 left-3 z-10">
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold border border-white/20 shadow-sm">
+        {/* Unified Bottom Bar for Location & AI */}
+        <div className="absolute bottom-2.5 left-3 right-3 z-10 flex items-center justify-between gap-1.5 pointer-events-none">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-bold border border-white/20 shadow-sm truncate max-w-[55%]">
             <span>📍</span>
-            <span>{locationLabel}</span>
+            <span className="truncate">{locationLabel}</span>
           </span>
-        </div>
 
-        {incident.aiConfidence && (
-          <div className="absolute bottom-2.5 right-3 z-10 bg-emerald-950/80 backdrop-blur-md text-emerald-300 text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 border border-emerald-400/30">
-            <Sparkles className="w-3 h-3 text-emerald-400" />
-            AI Verified ({(incident.aiConfidence * 100).toFixed(0)}%)
-          </div>
-        )}
+          {incident.aiConfidence && (
+            <div className="bg-emerald-950/80 backdrop-blur-md text-emerald-300 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 sm:py-1 rounded-full flex items-center gap-1 border border-emerald-400/30 shrink-0">
+              <Sparkles className="w-3 h-3 text-emerald-400" />
+              <span>AI {(incident.aiConfidence * 100).toFixed(0)}%</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Body content */}
-      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-4">
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
             <span className="font-bold text-slate-500">{incident.incidentNumber}</span>
@@ -75,7 +75,7 @@ export const IncidentCard: React.FC<Props> = ({ incident }) => {
           </div>
 
           <Link to={`/incidents/${incident.id}`}>
-            <h3 className="text-base font-bold text-navy-900 line-clamp-2 group-hover:text-violet-600 transition-colors leading-snug font-display">
+            <h3 className="text-sm sm:text-base font-bold text-navy-900 line-clamp-2 group-hover:text-violet-600 transition-colors leading-snug font-display">
               {incident.title}
             </h3>
           </Link>
@@ -89,14 +89,14 @@ export const IncidentCard: React.FC<Props> = ({ incident }) => {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <CategoryBadge category={incident.category} />
 
-            <div className="flex items-center gap-1 text-xs text-slate-700 font-bold bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200/80">
+            <div className="flex items-center gap-1 text-xs text-slate-700 font-bold bg-rose-50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-rose-200/80 shrink-0">
               <span className="text-rose-500">🔥</span>
               <span>{incident.supportCount} hype</span>
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
-            <div className="flex items-center gap-1.5 truncate max-w-[190px]">
+          <div className="flex items-center justify-between text-xs text-slate-500 pt-1 gap-2">
+            <div className="flex items-center gap-1.5 truncate flex-1 min-w-0">
               <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
               <span className="truncate font-medium text-slate-600">
                 {incident.address || incident.landmark || 'India'}

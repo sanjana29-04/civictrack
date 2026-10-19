@@ -79,98 +79,99 @@ export const HomePage: React.FC = () => {
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08] font-display">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] font-display">
             Fixing Our India, <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
               Together.
             </span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-medium">
+          <p className="max-w-2xl mx-auto text-sm sm:text-lg text-slate-300 leading-relaxed font-medium px-2">
             Snap the problem. Track the progress. Verify the repair. SnapFix is the youth-powered movement turning smartphone photos into verified street repairs across 26+ Indian cities.
           </p>
 
           {/* Category Chips Bar */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs font-bold text-slate-200">
-            <Link to="/explore?category=ROADS_POTHOLES" className="px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 transition-colors flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-1 text-xs font-bold text-slate-200">
+            <Link to="/explore?category=ROADS_POTHOLES" className="px-2.5 sm:px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 transition-colors flex items-center gap-1.5 text-[11px] sm:text-xs">
               <span>🕳️</span>
-              <span>Potholes & Roads</span>
+              <span>Potholes</span>
             </Link>
-            <Link to="/explore?category=DRAINAGE_WATERLOGGING" className="px-3 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-cyan-300 hover:bg-blue-500/25 transition-colors flex items-center gap-1.5">
+            <Link to="/explore?category=DRAINAGE_WATERLOGGING" className="px-2.5 sm:px-3 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-cyan-300 hover:bg-blue-500/25 transition-colors flex items-center gap-1.5 text-[11px] sm:text-xs">
               <span>🌊</span>
               <span>Waterlogging</span>
             </Link>
-            <Link to="/explore?category=STREETLIGHTS" className="px-3 py-1.5 rounded-full bg-yellow-500/15 border border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/25 transition-colors flex items-center gap-1.5">
+            <Link to="/explore?category=STREETLIGHTS" className="px-2.5 sm:px-3 py-1.5 rounded-full bg-yellow-500/15 border border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/25 transition-colors flex items-center gap-1.5 text-[11px] sm:text-xs">
               <span>💡</span>
               <span>Streetlights</span>
             </Link>
-            <Link to="/explore?category=GARBAGE_SANITATION" className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/25 transition-colors flex items-center gap-1.5">
+            <Link to="/explore?category=GARBAGE_SANITATION" className="px-2.5 sm:px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/25 transition-colors flex items-center gap-1.5 text-[11px] sm:text-xs">
               <span>🗑️</span>
-              <span>Sanitation & Waste</span>
+              <span>Sanitation</span>
             </Link>
-            <Link to="/explore?category=FOOTPATHS_ACCESSIBILITY" className="px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 hover:bg-purple-500/25 transition-colors flex items-center gap-1.5">
+            <Link to="/explore?category=FOOTPATHS_ACCESSIBILITY" className="px-2.5 sm:px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 hover:bg-purple-500/25 transition-colors flex items-center gap-1.5 text-[11px] sm:text-xs">
               <span>⚠️</span>
-              <span>Open Manholes & Hazards</span>
+              <span>Manholes</span>
             </Link>
           </div>
 
           {/* Search bar */}
-          <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto pt-2">
-            <div className="relative flex items-center shadow-2xl rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-2 focus-within:border-emerald-400 focus-within:ring-2 focus-within:ring-emerald-400/30 transition-all">
-              <Search className="w-5 h-5 text-emerald-400 ml-3 shrink-0" />
+          <form onSubmit={handleSearchSubmit} className="max-w-2xl w-full mx-auto pt-2 px-1">
+            <div className="relative flex items-center shadow-2xl rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-1.5 sm:p-2 focus-within:border-emerald-400 focus-within:ring-2 focus-within:ring-emerald-400/30 transition-all">
+              <Search className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 ml-2.5 sm:ml-3 shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search Delhi, Mumbai, Bengaluru, potholes, water leaks..."
-                className="w-full bg-transparent px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none font-medium"
+                placeholder="Search Delhi, Mumbai, Bengaluru, potholes..."
+                className="w-full bg-transparent px-2.5 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none font-medium truncate"
               />
               <button
                 type="submit"
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:from-emerald-400 hover:to-violet-500 text-white font-extrabold text-xs transition-all shadow-lg shadow-emerald-500/20 shrink-0 cursor-pointer"
+                className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:from-emerald-400 hover:to-violet-500 text-white font-extrabold text-xs transition-all shadow-lg shadow-emerald-500/20 shrink-0 cursor-pointer"
               >
-                Find Issues
+                <span className="hidden sm:inline">Find Issues</span>
+                <span className="sm:hidden">Search</span>
               </button>
             </div>
           </form>
 
           {/* Primary Action Buttons */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto px-2">
             <Link
               to="/report"
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:from-emerald-400 hover:to-violet-500 text-white font-extrabold text-sm shadow-xl shadow-emerald-500/25 flex items-center gap-2.5 transition-all duration-200 hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-violet-600 hover:from-emerald-400 hover:to-violet-500 text-white font-extrabold text-sm shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2.5 transition-all duration-200 active:scale-95"
             >
-              <PlusCircle className="w-5 h-5" />
-              Snap & Report Problem
+              <PlusCircle className="w-5 h-5 shrink-0" />
+              <span>Snap & Report Problem</span>
             </Link>
 
             <Link
               to="/map"
-              className="px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm border border-white/20 backdrop-blur-md flex items-center gap-2.5 transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm border border-white/20 backdrop-blur-md flex items-center justify-center gap-2.5 transition-all duration-200 active:scale-95 shadow-lg"
             >
-              <MapPin className="w-5 h-5 text-teal-300" />
-              Explore Pan-India Map (26+)
+              <MapPin className="w-5 h-5 text-teal-300 shrink-0" />
+              <span>Explore Live Map (26+)</span>
             </Link>
           </div>
 
           {/* Quick Metrics Bar */}
           {analytics && (
-            <div className="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto border-t border-white/10">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-violet-900/30 to-slate-900/40 backdrop-blur-md border border-violet-500/30 text-center shadow-lg shadow-violet-500/5">
-                <span className="block text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-pink-300 font-display">{analytics.totalIncidents}</span>
-                <span className="text-xs text-slate-300 font-medium">Pan-India Reports</span>
+            <div className="pt-8 sm:pt-10 grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 max-w-4xl w-full mx-auto border-t border-white/10 px-1">
+              <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-violet-900/30 to-slate-900/40 backdrop-blur-md border border-violet-500/30 text-center shadow-lg">
+                <span className="block text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-pink-300 font-display">{analytics.totalIncidents}</span>
+                <span className="text-[11px] sm:text-xs text-slate-300 font-medium">Pan-India Reports</span>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-900/30 to-slate-900/40 backdrop-blur-md border border-amber-500/30 text-center shadow-lg shadow-amber-500/5">
-                <span className="block text-3xl font-extrabold text-amber-400 font-display">{analytics.inProgressIncidents}</span>
-                <span className="text-xs text-slate-300 font-medium">Active Crews On-Site</span>
+              <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-amber-900/30 to-slate-900/40 backdrop-blur-md border border-amber-500/30 text-center shadow-lg">
+                <span className="block text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">{analytics.inProgressIncidents}</span>
+                <span className="text-[11px] sm:text-xs text-slate-300 font-medium">Active Crews</span>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-900/30 to-slate-900/40 backdrop-blur-md border border-cyan-500/30 text-center shadow-lg shadow-cyan-500/5">
-                <span className="block text-3xl font-extrabold text-cyan-300 font-display">{analytics.awaitingVerificationCount}</span>
-                <span className="text-xs text-slate-300 font-medium">Awaiting Citizen Check</span>
+              <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-cyan-900/30 to-slate-900/40 backdrop-blur-md border border-cyan-500/30 text-center shadow-lg">
+                <span className="block text-2xl sm:text-3xl font-extrabold text-cyan-300 font-display">{analytics.awaitingVerificationCount}</span>
+                <span className="text-[11px] sm:text-xs text-slate-300 font-medium">Citizen Check</span>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-900/30 to-slate-900/40 backdrop-blur-md border border-emerald-500/30 text-center shadow-lg shadow-emerald-500/5">
-                <span className="block text-3xl font-extrabold text-emerald-400 font-display">{analytics.resolutionConfirmationRatePercent}%</span>
-                <span className="text-xs text-slate-300 font-medium">Fixes Confirmed</span>
+              <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-emerald-900/30 to-slate-900/40 backdrop-blur-md border border-emerald-500/30 text-center shadow-lg">
+                <span className="block text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">{analytics.resolutionConfirmationRatePercent}%</span>
+                <span className="text-[11px] sm:text-xs text-slate-300 font-medium">Fixes Confirmed</span>
               </div>
             </div>
           )}

@@ -55,9 +55,9 @@ export const SnapFixLogo: React.FC<Props> = ({
 
   // 'nav' variant: Official logo graphic in navbar + interactive flair
   return (
-    <div className={`flex items-center gap-3 group select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 group select-none ${className}`}>
       {/* Official SnapFix Logo Emblem */}
-      <div className="h-11 w-11 rounded-xl bg-white p-1 border border-slate-200/90 shadow-xs shadow-emerald-500/10 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform shrink-0">
+      <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl bg-white p-1 border border-slate-200/90 shadow-xs shadow-emerald-500/10 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform shrink-0">
         <img
           src={logoImg}
           alt="SnapFix Emblem"
@@ -66,16 +66,17 @@ export const SnapFixLogo: React.FC<Props> = ({
       </div>
       <div>
         <div className="flex items-center gap-1.5 leading-none">
-          <span className="text-xl font-extrabold text-navy-950 tracking-tight font-display">
+          <span className="text-lg sm:text-xl font-extrabold text-navy-950 tracking-tight font-display">
             Snap<span className="text-emerald-600">Fix</span>
           </span>
-          <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 via-white to-emerald-500/20 text-slate-800 border border-slate-200/80 shadow-2xs">
+          <span className="text-[9px] sm:text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 via-white to-emerald-500/20 text-slate-800 border border-slate-200/80 shadow-2xs">
             🇮🇳 India
           </span>
         </div>
         {showTagline && (
-          <span className="block text-[10px] font-bold text-slate-500 tracking-wide mt-0.5 flex items-center gap-1">
-            <span>Fixing Our India Together</span>
+          <span className="text-[10px] font-bold text-slate-500 tracking-wide mt-0.5 flex items-center gap-1">
+            <span className="hidden sm:inline">Fixing Our India Together</span>
+            <span className="sm:hidden text-[9px] text-emerald-600 font-extrabold">Fixing India</span>
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           </span>
         )}

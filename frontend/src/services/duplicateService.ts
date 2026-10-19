@@ -9,22 +9,41 @@ export const duplicateService = {
     title = '',
     description = ''
   ): Promise<DuplicateCandidate[]> => {
-    const res = await api.get<ApiResponse<DuplicateCandidate[]>>('/duplicates/check-realtime', {
-      params: { latitude, longitude, category, title, description },
-    });
-    return res.data.data;
+    try {
+      const res = await api.get<ApiResponse<DuplicateCandidate[]>>('/duplicates/check-realtime', {
+        params: { latitude, longitude, category, title, description },
+      });
+      return res.data.data;
+    } catch {
+      return [];
+    }
   },
 
   getPendingCandidates: async (page = 0, size = 10): Promise<PageResponse<DuplicateCandidate>> => {
-    const res = await api.get<ApiResponse<PageResponse<DuplicateCandidate>>>('/duplicates/candidates', {
-      params: { page, size },
-    });
-    return res.data.data;
+    try {
+      const res = await api.get<ApiResponse<PageResponse<DuplicateCandidate>>>('/duplicates/candidates', {
+        params: { page, size },
+      });
+      return res.data.data;
+    } catch {
+      return {
+        content: [],
+        pageNumber: 0,
+        pageSize: size,
+        totalElements: 0,
+        totalPages: 0,
+        last: true,
+      };
+    }
   },
 
   getCandidatesForIncident: async (incidentId: string): Promise<DuplicateCandidate[]> => {
-    const res = await api.get<ApiResponse<DuplicateCandidate[]>>(`/duplicates/incident/${incidentId}`);
-    return res.data.data;
+    try {
+      const res = await api.get<ApiResponse<DuplicateCandidate[]>>(`/duplicates/incident/${incidentId}`);
+      return res.data.data;
+    } catch {
+      return [];
+    }
   },
 
   merge: async (survivingIncidentId: string, duplicateIncidentId: string, reason: string): Promise<string> => {

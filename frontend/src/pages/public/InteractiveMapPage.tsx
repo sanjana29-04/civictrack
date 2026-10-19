@@ -99,11 +99,11 @@ export const InteractiveMapPage: React.FC = () => {
       {/* Filter toolbar */}
       <div className="bg-white p-4 rounded-3xl border border-slate-200/90 shadow-sm flex flex-wrap items-center justify-between gap-3">
         {/* Status Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 text-xs font-bold">
+        <div className="flex items-center gap-1.5 text-xs font-bold overflow-x-auto pb-1 scrollbar-none max-w-full">
           <button
             type="button"
             onClick={() => setSelectedStatus('ALL')}
-            className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full transition-all shrink-0 cursor-pointer ${
               selectedStatus === 'ALL' ? 'bg-navy-950 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -112,7 +112,7 @@ export const InteractiveMapPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setSelectedStatus('OPEN')}
-            className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full transition-all shrink-0 cursor-pointer ${
               selectedStatus === 'OPEN' ? 'bg-violet-600 text-white shadow-sm' : 'bg-violet-50 text-violet-700 hover:bg-violet-100'
             }`}
           >
@@ -121,29 +121,29 @@ export const InteractiveMapPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setSelectedStatus('ACTIVE')}
-            className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full transition-all shrink-0 cursor-pointer ${
               selectedStatus === 'ACTIVE' ? 'bg-amber-500 text-white shadow-sm' : 'bg-amber-50 text-amber-700 hover:bg-amber-100'
             }`}
           >
-            Work in Progress
+            In Progress
           </button>
           <button
             type="button"
             onClick={() => setSelectedStatus('AWAITING')}
-            className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full transition-all shrink-0 cursor-pointer ${
               selectedStatus === 'AWAITING' ? 'bg-cyan-600 text-white shadow-sm' : 'bg-cyan-50 text-cyan-700 hover:bg-cyan-100'
             }`}
           >
-            Awaiting Verification
+            Citizen Verification
           </button>
           <button
             type="button"
             onClick={() => setSelectedStatus('CLOSED')}
-            className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full transition-all shrink-0 cursor-pointer ${
               selectedStatus === 'CLOSED' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
             }`}
           >
-            Resolved & Verified
+            Verified Fixed
           </button>
         </div>
 
@@ -161,9 +161,9 @@ export const InteractiveMapPage: React.FC = () => {
       </div>
 
       {/* Main Map + Sidebar Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[650px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:h-[650px]">
         {/* Map View */}
-        <div className="lg:col-span-2 h-full">
+        <div className="lg:col-span-2 h-[380px] sm:h-[480px] lg:h-full">
           {loading ? (
             <div className="h-full bg-slate-100 rounded-3xl flex items-center justify-center">
               <Loader2 className="w-8 h-8 animate-spin text-brand-600" />
@@ -179,7 +179,7 @@ export const InteractiveMapPage: React.FC = () => {
         </div>
 
         {/* Incident List Drawer */}
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm flex flex-col h-full overflow-hidden">
+        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm flex flex-col h-[480px] lg:h-full overflow-hidden">
           <div className="p-4 border-b border-slate-100 flex items-center justify-between">
             <h3 className="text-xs font-bold text-navy-900 uppercase tracking-wider font-display">
               Pan-India Hotspots ({filteredMarkers.length})
