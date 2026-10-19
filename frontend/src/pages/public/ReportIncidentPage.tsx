@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { incidentService } from '../../services/incidentService';
 import { duplicateService } from '../../services/duplicateService';
 import { aiService, QuickPrompt } from '../../services/aiService';
@@ -27,6 +27,7 @@ import {
 export const ReportIncidentPage: React.FC = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Form states
   const [title, setTitle] = useState('');
@@ -226,15 +227,8 @@ export const ReportIncidentPage: React.FC = () => {
 
   const handleSupportExisting = async (existingIncidentId: string) => {
     if (!user) {
-      const guestCitizen = {
-        id: 'usr-' + Math.floor(1000 + Math.random() * 9000),
-        email: 'citizen@snapfix.in',
-        fullName: 'Citizen Reporter',
-        role: 'ROLE_CITIZEN' as const,
-        createdAt: new Date().toISOString(),
-      };
-      localStorage.setItem('civictrack_user', JSON.stringify(guestCitizen));
-      localStorage.setItem('civictrack_token', 'demo-jwt-token-' + Date.now());
+      navigate('/login', { state: { from: location } });
+      return;
     }
     try {
       await incidentService.toggleSupport(existingIncidentId);
@@ -247,22 +241,14 @@ export const ReportIncidentPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!title.trim() || !description.trim()) {
-      setError('Title and description are required.');
+    if (!user) {
+      navigate('/login', { state: { from: location } });
       return;
     }
 
-    // Auto-create local citizen session if user has not logged in yet
-    if (!user) {
-      const guestCitizen = {
-        id: 'usr-' + Math.floor(1000 + Math.random() * 9000),
-        email: 'citizen@snapfix.in',
-        fullName: 'Citizen Reporter',
-        role: 'ROLE_CITIZEN' as const,
-        createdAt: new Date().toISOString(),
-      };
-      localStorage.setItem('civictrack_user', JSON.stringify(guestCitizen));
-      localStorage.setItem('civictrack_token', 'demo-jwt-token-' + Date.now());
+    if (!title.trim() || !description.trim()) {
+      setError('Title and description are required.');
+      return;
     }
 
     setSubmitting(true);

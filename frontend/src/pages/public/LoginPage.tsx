@@ -52,6 +52,13 @@ export const LoginPage: React.FC = () => {
           </p>
         </div>
 
+        {from === '/report' && (
+          <div className="p-3 bg-amber-50 text-amber-800 text-xs rounded-2xl border border-amber-200/90 flex items-center gap-2">
+            <span className="text-base">📢</span>
+            <span className="font-semibold">Please sign in or register to submit a problem report.</span>
+          </div>
+        )}
+
         {error && (
           <div className="p-3.5 bg-red-50 text-red-700 text-xs rounded-2xl border border-red-200/80 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
@@ -102,7 +109,7 @@ export const LoginPage: React.FC = () => {
 
         <div className="text-center text-xs text-slate-500">
           Don't have an account?{' '}
-          <Link to="/register" className="font-bold text-brand-600 hover:underline">
+          <Link to="/register" state={location.state} className="font-bold text-brand-600 hover:underline">
             Register as Citizen
           </Link>
         </div>

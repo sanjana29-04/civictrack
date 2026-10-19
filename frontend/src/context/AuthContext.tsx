@@ -19,6 +19,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
     try {
+      const storedToken = localStorage.getItem('civictrack_token');
+      if (storedToken && storedToken.startsWith('demo-jwt-token-')) {
+        localStorage.removeItem('civictrack_user');
+        localStorage.removeItem('civictrack_token');
+        return null;
+      }
       const saved = localStorage.getItem('civictrack_user');
       return saved ? JSON.parse(saved) : null;
     } catch {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Lock, Mail, User, Phone, Loader2, CheckCircle2 } from 'lucide-react';
 import { SnapFixLogo } from '../../components/common/SnapFixLogo';
@@ -14,6 +14,8 @@ export const RegisterPage: React.FC = () => {
 
   const { register } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as any)?.from?.pathname || '/dashboard';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ export const RegisterPage: React.FC = () => {
         fullName: fullName.trim(),
         phone: phone.trim() || undefined,
       });
-      navigate('/dashboard');
+      navigate(from, { replace: true });
     } catch (err: any) {
       setError(err.response?.data?.message || 'Registration failed. Please try again.');
     } finally {
@@ -56,6 +58,13 @@ export const RegisterPage: React.FC = () => {
             Fixing our India together. Join fellow citizens in reporting, tracking, and verifying neighborhood repairs.
           </p>
         </div>
+
+        {from === '/report' && (
+          <div className="p-3 bg-amber-50 text-amber-800 text-xs rounded-2xl border border-amber-200/90 flex items-center gap-2">
+            <span className="text-base">📢</span>
+            <span className="font-semibold">Create your citizen account to submit your problem report.</span>
+          </div>
+        )}
 
         {error && (
           <div className="p-3.5 bg-red-50 text-red-700 text-xs rounded-2xl border border-red-200/80 flex items-center gap-2">
@@ -137,7 +146,7 @@ export const RegisterPage: React.FC = () => {
 
         <div className="text-center text-xs text-slate-500 font-medium">
           Already have an account?{' '}
-          <Link to="/login" className="font-bold text-brand-600 hover:underline">
+          <Link to="/login" state={location.state} className="font-bold text-brand-600 hover:underline">
             Sign In to SnapFix
           </Link>
         </div>
