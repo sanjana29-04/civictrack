@@ -226,8 +226,15 @@ export const ReportIncidentPage: React.FC = () => {
 
   const handleSupportExisting = async (existingIncidentId: string) => {
     if (!user) {
-      navigate('/login');
-      return;
+      const guestCitizen = {
+        id: 'usr-' + Math.floor(1000 + Math.random() * 9000),
+        email: 'citizen@snapfix.in',
+        fullName: 'Citizen Reporter',
+        role: 'ROLE_CITIZEN' as const,
+        createdAt: new Date().toISOString(),
+      };
+      localStorage.setItem('civictrack_user', JSON.stringify(guestCitizen));
+      localStorage.setItem('civictrack_token', 'demo-jwt-token-' + Date.now());
     }
     try {
       await incidentService.toggleSupport(existingIncidentId);
@@ -239,18 +246,28 @@ export const ReportIncidentPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) {
-      navigate('/login');
-      return;
-    }
 
     if (!title.trim() || !description.trim()) {
       setError('Title and description are required.');
       return;
     }
 
+    // Auto-create local citizen session if user has not logged in yet
+    if (!user) {
+      const guestCitizen = {
+        id: 'usr-' + Math.floor(1000 + Math.random() * 9000),
+        email: 'citizen@snapfix.in',
+        fullName: 'Citizen Reporter',
+        role: 'ROLE_CITIZEN' as const,
+        createdAt: new Date().toISOString(),
+      };
+      localStorage.setItem('civictrack_user', JSON.stringify(guestCitizen));
+      localStorage.setItem('civictrack_token', 'demo-jwt-token-' + Date.now());
+    }
+
     setSubmitting(true);
     setError(null);
+
 
     try {
       const created = await incidentService.create({

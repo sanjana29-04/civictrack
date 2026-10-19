@@ -17,29 +17,58 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    try {
+      const saved = localStorage.getItem('civictrack_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
   const [token, setToken] = useState<string | null>(localStorage.getItem('civictrack_token'));
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    let isMounted = true;
+    const safetyTimer = setTimeout(() => {
+      if (isMounted) setIsLoading(false);
+    }, 1500);
+
     const initAuth = async () => {
       const storedToken = localStorage.getItem('civictrack_token');
-      if (storedToken) {
+      if (storedToken && !user) {
         try {
-          const currentUser = await authService.getMe();
-          setUser(currentUser);
-        } catch (error) {
-          console.error('Session expired or invalid', error);
-          localStorage.removeItem('civictrack_token');
-          setToken(null);
-          setUser(null);
+          const currentUser = await Promise.race([
+            authService.getMe(),
+            new Promise<never>((_, reject) => setTimeout(() => reject(new Error('Timeout')), 2000))
+          ]);
+          if (isMounted) setUser(currentUser);
+        } catch {
+          const saved = localStorage.getItem('civictrack_user');
+          if (saved && isMounted) {
+            try {
+              setUser(JSON.parse(saved));
+            } catch {
+              localStorage.removeItem('civictrack_token');
+              localStorage.removeItem('civictrack_user');
+              if (isMounted) {
+                setToken(null);
+                setUser(null);
+              }
+            }
+          }
         }
       }
-      setIsLoading(false);
+      if (isMounted) setIsLoading(false);
     };
 
     initAuth();
+    return () => {
+      isMounted = false;
+      clearTimeout(safetyTimer);
+    };
   }, []);
+
 
   const login = async (params: LoginParams) => {
     const data = await authService.login(params);

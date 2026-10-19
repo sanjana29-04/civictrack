@@ -11,8 +11,16 @@ interface Props {
 export const ProtectedRoute: React.FC<Props> = ({ children, allowedRoles }) => {
   const { user, isLoading } = useAuth();
   const location = useLocation();
+  const [timedOut, setTimedOut] = React.useState(false);
 
-  if (isLoading) {
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimedOut(true);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading && !timedOut) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center">
         <div className="w-10 h-10 border-4 border-brand-200 border-t-brand-600 rounded-full animate-spin" />
@@ -20,6 +28,7 @@ export const ProtectedRoute: React.FC<Props> = ({ children, allowedRoles }) => {
       </div>
     );
   }
+
 
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;

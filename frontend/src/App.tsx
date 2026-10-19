@@ -67,15 +67,9 @@ export default function App() {
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
 
-                  {/* Authenticated Citizen routes */}
-                  <Route
-                    path="/report"
-                    element={
-                      <ProtectedRoute>
-                        <ReportIncidentPage />
-                      </ProtectedRoute>
-                    }
-                  />
+                  {/* Public reporting route - accessible directly without blocking */}
+                  <Route path="/report" element={<ReportIncidentPage />} />
+
                   <Route
                     path="/dashboard"
                     element={
