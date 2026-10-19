@@ -109,6 +109,28 @@ const MapAutoResizer: React.FC = () => {
   return null;
 };
 
+type MapStyle = 'VOYAGER' | 'SATELLITE' | 'LIGHT';
+
+const MAP_STYLES: Record<MapStyle, { name: string; url: string; subdomains?: string; attribution: string }> = {
+  VOYAGER: {
+    name: '🗺️ Streets',
+    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  },
+  SATELLITE: {
+    name: '🛰️ Satellite',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: '&copy; Esri, Maxar, Earthstar Geographics',
+  },
+  LIGHT: {
+    name: '🌆 Light',
+    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  },
+};
+
 export const IncidentMap: React.FC<Props> = ({
   markers,
   center = [21.7679, 78.8718], // Default to All-India view
@@ -119,6 +141,7 @@ export const IncidentMap: React.FC<Props> = ({
   const [currentCenter, setCurrentCenter] = React.useState<[number, number]>(center);
   const [currentZoom, setCurrentZoom] = React.useState<number>(zoom);
   const [activeCity, setActiveCity] = React.useState<string>('All India');
+  const [selectedStyle, setSelectedStyle] = React.useState<MapStyle>('VOYAGER');
 
   // Synchronize when parent passes new center or zoom (e.g. clicking incident in sidebar)
   useEffect(() => {
@@ -134,6 +157,8 @@ export const IncidentMap: React.FC<Props> = ({
     setCurrentCenter(city.coords);
     setCurrentZoom(city.zoom);
   };
+
+  const currentStyleConfig = MAP_STYLES[selectedStyle];
 
   return (
     <div className="h-full flex flex-col space-y-3">
@@ -163,6 +188,24 @@ export const IncidentMap: React.FC<Props> = ({
       </div>
 
       <div className="flex-1 w-full min-h-[480px] sm:min-h-[540px] rounded-3xl overflow-hidden border border-slate-200 shadow-md relative z-0">
+        {/* Map Style Selector Overlay */}
+        <div className="absolute top-3 right-3 z-[1000] flex items-center bg-white/95 backdrop-blur-md p-1 rounded-2xl shadow-md border border-slate-200/90 text-xs font-bold gap-1">
+          {(Object.keys(MAP_STYLES) as MapStyle[]).map((styleKey) => (
+            <button
+              key={styleKey}
+              type="button"
+              onClick={() => setSelectedStyle(styleKey)}
+              className={`px-2.5 py-1 rounded-xl transition-all cursor-pointer text-[11px] ${
+                selectedStyle === styleKey
+                  ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-navy-900 hover:bg-slate-100'
+              }`}
+            >
+              {MAP_STYLES[styleKey].name}
+            </button>
+          ))}
+        </div>
+
         <MapContainer
           center={currentCenter}
           zoom={currentZoom}
@@ -172,10 +215,13 @@ export const IncidentMap: React.FC<Props> = ({
           <ChangeView center={currentCenter} zoom={currentZoom} />
           <MapAutoResizer />
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}.png"
-            maxZoom={19}
+            key={selectedStyle}
+            attribution={currentStyleConfig.attribution}
+            url={currentStyleConfig.url}
+            subdomains={currentStyleConfig.subdomains || 'abc'}
+            maxZoom={20}
           />
+
 
 
           {markers.map((marker) => {
