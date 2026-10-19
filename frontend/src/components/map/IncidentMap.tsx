@@ -109,25 +109,27 @@ const MapAutoResizer: React.FC = () => {
   return null;
 };
 
-type MapStyle = 'VOYAGER' | 'SATELLITE' | 'LIGHT';
+type MapStyle = 'STREET' | 'SATELLITE' | 'HOT';
 
-const MAP_STYLES: Record<MapStyle, { name: string; url: string; subdomains?: string; attribution: string }> = {
-  VOYAGER: {
-    name: '🗺️ Streets',
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    subdomains: 'abcd',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+const MAP_STYLES: Record<MapStyle, { name: string; url: string; subdomains?: string; attribution: string; maxZoom: number }> = {
+  STREET: {
+    name: '🗺️ Clean Streets',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: '&copy; Esri, HERE, Garmin, USGS, OpenStreetMap contributors',
+    maxZoom: 19,
   },
   SATELLITE: {
     name: '🛰️ Satellite',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     attribution: '&copy; Esri, Maxar, Earthstar Geographics',
+    maxZoom: 19,
   },
-  LIGHT: {
-    name: '🌆 Light',
-    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    subdomains: 'abcd',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  HOT: {
+    name: '🏙️ Detailed / Transit',
+    url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    subdomains: 'abc',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19,
   },
 };
 
@@ -141,7 +143,8 @@ export const IncidentMap: React.FC<Props> = ({
   const [currentCenter, setCurrentCenter] = React.useState<[number, number]>(center);
   const [currentZoom, setCurrentZoom] = React.useState<number>(zoom);
   const [activeCity, setActiveCity] = React.useState<string>('All India');
-  const [selectedStyle, setSelectedStyle] = React.useState<MapStyle>('VOYAGER');
+  const [selectedStyle, setSelectedStyle] = React.useState<MapStyle>('STREET');
+
 
   // Synchronize when parent passes new center or zoom (e.g. clicking incident in sidebar)
   useEffect(() => {
@@ -219,7 +222,7 @@ export const IncidentMap: React.FC<Props> = ({
             attribution={currentStyleConfig.attribution}
             url={currentStyleConfig.url}
             subdomains={currentStyleConfig.subdomains || 'abc'}
-            maxZoom={20}
+            maxZoom={currentStyleConfig.maxZoom}
           />
 
 
